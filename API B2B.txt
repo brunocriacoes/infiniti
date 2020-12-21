@@ -1,8 +1,3 @@
-http://191.243.198.108:9192/B2B/login?localizador=JOACO331SC&usuario=LEO&senha=LEO
-
-
-
-
 Opção LISTA DE NOMES
 http://191.243.198.108:9194/login?dwwelcomemessage=eyJsb2NhbGl6YWRvciI6IklORklOSVRJX0RFTU8iLAoibG9naW4iOiJBTUJFViIsCiJwYXNzd29yZCI6IkFNQkVWIn0=
 http://191.243.198.108:9194/lernomes?dwwelcomemessage=eyJsb2NhbGl6YWRvciI6IklORklOSVRJX0RFTU8iLAoibG9naW4iOiJBTUJFViIsCiJwYXNzd29yZCI6IkFNQkVWIn0=
