@@ -1,0 +1,25 @@
+http://191.243.198.108:9192/B2B/login?localizador=JOACO331SC&usuario=LEO&senha=LEO
+
+
+
+
+Opção LISTA DE NOMES
+http://191.243.198.108:9194/login?dwwelcomemessage=eyJsb2NhbGl6YWRvciI6IklORklOSVRJX0RFTU8iLAoibG9naW4iOiJBTUJFViIsCiJwYXNzd29yZCI6IkFNQkVWIn0=
+http://191.243.198.108:9194/lernomes?dwwelcomemessage=eyJsb2NhbGl6YWRvciI6IklORklOSVRJX0RFTU8iLAoibG9naW4iOiJBTUJFViIsCiJwYXNzd29yZCI6IkFNQkVWIn0=
+http://191.243.198.108:9194/lerpecasnome?dwwelcomemessage=eyJsb2NhbGl6YWRvciI6IklORklOSVRJX0RFTU8iLAoibG9naW4iOiJBTUJFViIsCiJwYXNzd29yZCI6IkFNQkVWIn0=&fun=4228
+http://191.243.198.108:9194/lerpecasIdentNome?dwwelcomemessage=eyJsb2NhbGl6YWRvciI6IklORklOSVRJX0RFTU8iLAoibG9naW4iOiJBTUJFViIsCiJwYXNzd29yZCI6IkFNQkVWIn0=&fun=4228&pec=31
+
+Entregar Peças
+http://localhost:9191/entregarpecaident?dwwelcomemessage=eyJsb2NhbGl6YWRvciI6IklORklOSVRJX0RFTU8iLAoibG9naW4iOiJBTUJFViIsCiJwYXNzd29yZCI6IkFNQkVWIn0=&codbarras=000015&fun=4228
+Devolver Peças
+http://localhost:9191/devolverpecaident?dwwelcomemessage=eyJsb2NhbGl6YWRvciI6IklORklOSVRJX0RFTU8iLAoibG9naW4iOiJBTUJFViIsCiJwYXNzd29yZCI6IkFNQkVWIn0=&codbarras=000015&fun=4228
+
+Opção LISTA DE PEÇAS
+http://191.243.198.108:9194/lerpecas?dwwelcomemessage=eyJsb2NhbGl6YWRvciI6IklORklOSVRJX0RFTU8iLAoibG9naW4iOiJBTUJFViIsCiJwYXNzd29yZCI6IkFNQkVWIn0=
+http://191.243.198.108:9194/lerpecasestoque?dwwelcomemessage=eyJsb2NhbGl6YWRvciI6IklORklOSVRJX0RFTU8iLAoibG9naW4iOiJBTUJFViIsCiJwYXNzd29yZCI6IkFNQkVWIn0=&pec=39
+http://191.243.198.108:9194/lerpecasuso?dwwelcomemessage=eyJsb2NhbGl6YWRvciI6IklORklOSVRJX0RFTU8iLAoibG9naW4iOiJBTUJFViIsCiJwYXNzd29yZCI6IkFNQkVWIn0=&pec=39
+
+Opção CONSULTA DE PEÇAS
+http://localhost:9191/lerpecaident?dwwelcomemessage=eyJsb2NhbGl6YWRvciI6IklORklOSVRJX0RFTU8iLAoibG9naW4iOiJBTUJFViIsCiJwYXNzd29yZCI6IkFNQkVWIn0=&codbarras=000009
+
+
