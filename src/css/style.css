@@ -9,7 +9,7 @@ body, img {
     border: 0;
 }
 body {
-    background: linear-gradient( #057fb6 0%,  #057fb6 25%, #EEE 25%, #EEE 90%, #057fb6 90%, #057fb6 100% );
+    background: linear-gradient( #057fb6 0%,  #057fb6 35%, #EEE 35%, #EEE 90%, #057fb6 90%, #057fb6 100% );
     background-size: 100vw 100vh;
     background-attachment: fixed;
 }
@@ -26,10 +26,15 @@ body {
 }
 .skin-login {
     display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999999999;
     align-items: center;
     justify-content: center;
     text-align: center;
     background-color: var(--azul);
+    width: 100%;
     min-height: 100vh;
     padding: 50px 0;
 }
@@ -173,7 +178,15 @@ body {
     background-color: #f5f5f5;
     box-shadow: 0 0 3px rgba(0, 0, 0, .1);
 }
+.menu__logo {
+    display: inline-block;
+    height: 30px;
+    margin-left: 20px;
+}
 .link--back {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
     display: grid;
     text-align: center;
     align-items: center;
@@ -183,4 +196,169 @@ body {
     border-radius: 100%;
     background-color: #EEE;
     box-shadow: 0 0 3px rgba(0, 0, 0, .3), inset 0 0 5px rgba(0, 0, 0, .2) ;
+}
+.info_session {
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: #f7f7f7;
+    background-color: var(--azul);
+    padding-bottom: 20px;
+}
+.search {
+    display: grid;
+    grid-template-columns: 1fr 40px;
+    height: 40px;
+    width: 100%;
+    background-color: var(--azul);
+    background-color: #CCC;
+}
+.search input {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    text-indent: 16px;
+    background-color: var(--azul);
+    border: none;
+    color: #FFF;
+    font-weight: bold;
+}
+.search input::placeholder {
+    color: #FFF;
+    font-weight: normal;
+}
+.search button {
+    background-color: var(--azul);
+    border: none;
+}
+.search button img {
+    display: block;
+    filter: invert();
+    padding: 7px;
+}
+.list {
+    display: grid;
+    grid-gap: 0px;
+}
+.list > div:nth-child(2n+1) {
+    background-color: #EEE;
+}
+.list > .list__item {
+    display: grid;
+    background-color: #f7f7f7;
+    width: 80vw;
+    margin: 0 auto;
+    border-radius: 5px;
+    padding: 7px 14px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .2);
+    min-height: 50px;
+    align-items: center;
+    text-decoration: none;
+    color: #222;
+}
+.grid--acompanhamento {
+    grid-template-columns: 1fr 70px;
+}
+.box__subtotal {
+    display: grid;
+    text-align: center;
+    padding: 20px 0px;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+    width: 100%;
+    max-width: 80vw;
+    margin: 0 auto;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .2);
+}
+.box__subtotal b {
+    font-size: clamp(1rem, 24px, 80%);
+}
+.box__subtotal small {
+    color: #666;
+}
+.grid--detalhes_prod {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    max-width: 80vw;
+    margin: 0 auto;
+}
+.title--center {
+    display: block;
+    text-align: center;
+    color: #FFF;
+    background-color: var(--azul);
+    line-height: 50px;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+}
+.form_serach_barcode {
+    display: grid;
+    grid-template-columns: 1fr 40px;
+    max-width: 80vw;
+    margin: 0 auto;
+    background-color: var(--azul);
+    border-radius: 50px;
+    border: 5px solid #EEE
+}
+.form_serach_barcode input {
+    display: block;
+    background-color: var(--azul);
+    border: 0;
+    border-radius: 50px;
+    text-indent: 12px;
+    font-weight: bold;
+    color: #EEE;
+}
+.form_serach_barcode input::placeholder {
+    color: #EEE;
+}
+.form_serach_barcode button {
+    display: block;
+    border: 0;
+    background-color: var(--azul);
+    border-radius: 50px;
+}
+.form_serach_barcode button img {
+    display: block;
+    filter: invert();
+    padding: 7px;
+}
+.title--destaque {
+    display: block;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+.block_descricao {
+    display: block;
+    width: 80vw;
+    margin: 0 auto;
+    color: #222;
+    background-color: #f7f7f7;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+.list_b_more {
+    display: block;
+    text-align: center;
+    font-size: 12px;
+}
+.list_b_more small {
+    font-weight: lighter;
+    display: block;
+}
+.grid--listagem-peca {
+    grid-template-columns: repeat(4, 1fr);
+}
+.grid--listagem-peca-em-estoque {
+    grid-template-columns: 1fr 75px;
+}
+.grid--listagem-peca-em-uso {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px;
 }

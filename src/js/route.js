@@ -23,7 +23,7 @@ export default class {
         all_route = Array.from(all_route)
         all_route.forEach($routre => {
             let is_route = $routre.getAttribute('data-route');
-            if (url.hash == is_route) {
+            if (url.hash.indexOf(is_route) !== -1 ) {
                 $routre.removeAttribute('hidden')
             } else {
                 $routre.setAttribute('hidden', '')
