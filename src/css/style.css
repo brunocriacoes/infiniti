@@ -362,3 +362,25 @@ body {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 15px;
 }
+.grid--lista-nomes {
+    grid-template-columns: 1fr 70px 70px;
+}
+.btns {
+    display: grid;
+    width: 80vw;
+    grid-gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 20px auto;
+}
+.btns a {
+    display: block;
+    background-color: var(--azul);
+    padding: 5px 0 ;
+    text-align: center;
+    color: #EEE;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.grid--lista-entrega {
+    grid-template-columns: repeat(3, 1fr);
+}

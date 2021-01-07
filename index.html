@@ -255,7 +255,121 @@
             <i class="icon icon--back"></i>
         </a>
     </div>
-
+    <div data-route="#/lista-de-nomes">
+        <h2 class="title--center"> Lista de nomes </h2>
+        <div class="list">
+            <a href="#/peca-por-user/1" class="list__item grid--lista-nomes">
+                <span>Bruno Vieira</span>
+                <b class="list_b_more">
+                    <span>5</span>
+                    <small>E Uso</small>
+                </b>
+                <b class="list_b_more">
+                    <span>1</span>
+                    <small>Vencida(s)</small>
+                </b>         
+            </a>  
+        </div>
+        <div class="btns">
+            <a href="#/entregar/1">Entregar Peça</a>
+            <a href="#/devolver/2">Devolver Peça</a>
+        </div>
+        <a href="javascript:void(window.history.back())" class="link--back">
+            <i class="icon icon--back"></i>
+        </a>
+    </div>
+    <div data-route="#/peca-por-user">
+        <h2 class="title--center"> Peças </h2>
+        <div class="list">
+            <a href="#/detalhe-listagem-peca/1" class="list__item grid--listagem-peca-em-uso">
+                <b class="list_b_more">
+                    <span>217520</span>
+                    <small>Código</small>
+                </b>
+                <b class="list_b_more">
+                    <span>Camiseta</span>
+                    <small>Descrição</small>
+                </b>
+                <b class="list_b_more">
+                    <span>06/01/2021</span>
+                    <small>Inicio</small>
+                </b>
+                <b class="list_b_more">
+                    <span>06/01/2021</span>
+                    <small>Validade</small>
+                </b>
+                <b class="list_b_more">
+                    <span>06/01/2021</span>
+                    <small>Baixa</small>
+                </b>
+                <b class="list_b_more">
+                    <span>Ativo</span>
+                    <small>Status</small>
+                </b>                
+            </a>
+        </div>
+        <a href="javascript:void(window.history.back())" class="link--back">
+            <i class="icon icon--back"></i>
+        </a>
+    </div>
+    <div data-route="#/entregar">
+        <h2 class="title--center"> Entregar </h2>
+        <form action="javascript:void(0)" class="form_serach_barcode">
+            <input type="text" placeholder="Informe o código">
+            <button type="submit">
+                <img src="./src/ico/check.svg">
+            </button>
+        </form>
+        <div class="space"></div>
+        <div class="list">
+            <a href="#/detalhe-listagem-peca/1" class="list__item grid--lista-entrega">
+                <b class="list_b_more">
+                    <span>217520</span>
+                    <small>Código</small>
+                </b>
+                <b class="list_b_more">
+                    <span>Camiseta</span>
+                    <small>Descrição</small>
+                </b>
+                <b class="list_b_more">
+                    <span>06/01/2021</span>
+                    <small>validade</small>
+                </b>       
+            </a>
+        </div>
+        <a href="javascript:void(window.history.back())" class="link--back">
+            <i class="icon icon--back"></i>
+        </a>
+    </div>
+    <div data-route="#/devolver">
+        <h2 class="title--center"> Devolver </h2>
+        <form action="javascript:void(0)" class="form_serach_barcode">
+            <input type="text" placeholder="Informe o código">
+            <button type="submit">
+                <img src="./src/ico/check.svg">
+            </button>
+        </form>
+        <div class="space"></div>
+        <div class="list">
+            <a href="#/detalhe-listagem-peca/1" class="list__item grid--lista-entrega">
+                <b class="list_b_more">
+                    <span>217520</span>
+                    <small>Código</small>
+                </b>
+                <b class="list_b_more">
+                    <span>Camiseta</span>
+                    <small>Descrição</small>
+                </b>
+                <b class="list_b_more">
+                    <span>06/01/2021</span>
+                    <small>validade</small>
+                </b>       
+            </a>
+        </div>
+        <a href="javascript:void(window.history.back())" class="link--back">
+            <i class="icon icon--back"></i>
+        </a>
+    </div>
     <script>
          if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
