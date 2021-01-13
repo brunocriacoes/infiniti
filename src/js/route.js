@@ -3,16 +3,16 @@ export default class {
     pages = []
     constructor(init_page = '#/home') {
         this.init_page = init_page
-        window.onpopstate = () => this.render()
         this.render()
     }
     add(path, call_back) {
-        path = path.replace('#/', '')
-        path = path.replace('-', '_')
         if (!this.pages[path]) {
             this.pages[path] = []
         }
-        this.pages[path].push(call_back)
+        this.pages.push({
+            path,
+            call_back
+        })
     }
     render() {
         let url = new URL(window.location.href)
@@ -29,11 +29,17 @@ export default class {
                 $routre.setAttribute('hidden', '')
             }
         })
-        let path = url.hash
-        path = path.replace('#/', '')
-        path = path.replace('-', '_')
-        this.pages[path]?.forEach(call_back => {
-            call_back()
+        
+
+        this.pages.forEach(hook => {
+            if( window.location.href.indexOf(hook.path) !== -1 ) {
+                let param = url.hash.replace('#', '')
+                param = param.replace(hook.path, '')
+                param = param.split('/')
+                param = param.filter( x => x.length > 1 )
+                param = param.map( x => x?.replace('%20', ' ') )
+                hook.call_back( param )
+            }
         })
     }
 }

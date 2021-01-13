@@ -4,12 +4,12 @@ const cacheAssets = [
 ];
 
 self.addEventListener('install', e => {
-  console.log('Install');
+  // console.log('Install');
   e.waitUntil(
     caches
       .open(cacheName)
       .then(cache => {
-        console.log('Cache');
+        // console.log('Cache');
         cache.addAll(cacheAssets);
       })
       .then(() => self.skipWaiting())
@@ -17,7 +17,7 @@ self.addEventListener('install', e => {
 });
 
 self.addEventListener('activate', e => {
-  console.log('Activate');
+  // console.log('Activate');
   e.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(
@@ -32,6 +32,6 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
-  console.log('Fetch');
+  // console.log('Fetch');
   e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
 });

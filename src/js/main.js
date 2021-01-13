@@ -1,11 +1,24 @@
-import API from './api.js'
 import Route from './route.js'
+import APP from './app.js'
 
-const api = new API
 const route = new Route('#/home')
 
+globalThis.app = new APP
 
-api.login( 'INFINITI_DEMO', 'AMBEV', 'AMBEV' ).then( res => console.log( 'LOGIN: ', res) )
-// api.get_name().then( res => console.log('LIST NAME', res) )
-// api.get_all_piece_by_name_id( 4228 ).then( res => console.log('LIST PIECE BY NAME', res) )
-// api.get_piece_by_name_id( 422, 31 ).then( res => console.log('ALL PIECE BY NAME', res) )
+route.add( '/peca-por-user', param => {
+    app.peca_detelhe(param[0], param[1])
+} )
+route.add( '/peca-detalhes-por-user', param => {
+    app.peca_detelhe_user(param[0], param[1])
+} )
+route.add( '/entregar', param => {
+    app.set_user(param[0])
+} )
+route.add( '/devolver', param => {
+    app.set_user(param[0])
+} )
+
+route.render()
+window.onpopstate = () => {
+    route.render()
+}

@@ -9,40 +9,47 @@
     <link rel="manifest" href="./manifest.json">
 </head>
 <body>
-    <form action="javascript:void(0)" class="search">
+    <div class="load" hidden>
+        <img src="./src/img/logo.png">
+    </div>
+    <div class="pre-load" hidden>
+        <img src="./src/img/loading.gif" alt="">
+    </div>
+    <form action="javascript:void(app.search())" class="search js-search-form">
         <input type="text" placeholder="O que esta procurando">
         <button type="submit">
             <img src="./src/ico/check.svg">
         </button>
     </form>
     <div class="menu">
-        <a href="">
-            <img src="./src/img/logo-default.png" class="menu__logo">
+        <a href="#/home">
+            <img src="./src/img/logo-default.png" class="menu__logo js-logo">
         </a>
         <a href="#/home" class="icon ico--menu-home"></a>        
-        <a href="#/home" class="icon ico--menu-search"></a>        
-        <a href="#/sair" class="icon ico--menu-logout"></a>        
+        <a href="javascript:void(app.toggle_search())" class="icon ico--menu-search js-search-link"></a>        
+        <a href="javascript:void(app.logout())" class="icon ico--menu-logout"></a>        
     </div>
     <div class="info_session">
         <span>AMBEV INDUSTRIA DE CERVEJAS LTD</span> <br>        
         <strong>Olá, Bruno seja bem vindo </strong>
     </div>
     <div class="skin-login" data-route="#/login">
-        <form action="javascript:void(0)" class="container container--login">
+        <form action="javascript:void(app.login())" name="f_login" class="container container--login">
             <img class="logo-login" src="./src/img/logo-box-white.png">
             <div class="space"></div>
             <label class="label label--login" for="">Localizador da Empresa</label>
-            <input type="text" class="input input--login">
+            <input type="text" class="input input--login" value="INFINITI_DEMO" name="locator">
             <label class="label label--login" for="">Usuário</label>
-            <input type="text" class="input input--login">
+            <input type="text" class="input input--login" value="AMBEV" name="user">
             <label class="label label--login" for="">Senha</label>
-            <input type="text" class="input input--login">
+            <input type="password" class="input input--login" value="AMBEV" name="pass">
             <span class="alert"></span>
             <input type="submit" class="btn btn--login" value="ENTRAR">
         </form>
     </div>
     <div data-route="#/home">
         <div class="container">
+            
             <a href="#/pecas-identificadas" class="card-navigation">
                 <i class="icon"></i>
                 <b>Peças Identificadas</b>
@@ -72,88 +79,88 @@
             </a>
         </div>
     </div>
-    <div data-route="#/acompanhamento-de-pecas" class="list">
-        <a href="#/detalhe-peca/1" class="list__item grid--acompanhamento">
-            <span>Calça</span>
-            <b>3001</b>            
-        </a>
-        <a href="#/detalhe-peca/1" class="list__item grid--acompanhamento">
-            <span>Camisa</span>
-            <b>3001</b>            
-        </a>
+    <div data-route="#/acompanhamento-de-pecas" >
+        <div class="list js-list-pecas"></div>       
         <a href="javascript:void(window.history.back())" class="link--back">
             <i class="icon icon--back"></i>
         </a>
     </div>
     <div data-route="#/detalhe-peca">
         <h2 class="title--center">Calça</h2>
-        <div class="box__subtotal">
-            <b>24838</b>
-            <small>Código ROI</small>
+        <div class="list">
+            <a href="#/detalhe-listagem-peca/1" class="list__item grid--listagem-peca-em-uso">
+                <b class="list_b_more">
+                    <span>217520</span>
+                    <small>Código</small>
+                </b>
+                <b class="list_b_more">
+                    <span>00/00/000</span>
+                    <small>Envio</small>
+                </b>
+                <b class="list_b_more">
+                    <span>115</span>
+                    <small>Enviadas</small>
+                </b>
+                <b class="list_b_more">
+                    <span>06/01/2021</span>
+                    <small>Devolvidas</small>
+                </b>
+                <b class="list_b_more">
+                    <span>06/01/2021</span>
+                    <small>Descartadas</small>
+                </b>
+                <b class="list_b_more">
+                    <span>06/01/2021</span>
+                    <small>En Aberto</small>
+                </b>                
+            </a>
         </div>
         <div class="space"></div>
-        <div class="grid--detalhes_prod">
-            <div class="box__subtotal">
-                <b>00/00/0000</b>
-                <small>Enviadas</small>
-            </div>
-            <div class="box__subtotal">
-                <b>100</b>
-                <small>Devolvidas</small>
-            </div>
-            <div class="box__subtotal">
-                <b>120</b>
-                <small>Descardata</small>
-            </div>
-            <div class="box__subtotal">
-                <b>20</b>
-                <small>Em Aberto</small>
-            </div>
-        </div>
         <a href="javascript:void(window.history.back())" class="link--back">
             <i class="icon icon--back"></i>
         </a>
     </div>
     <div data-route="#/consultar-pecas">
         <h2 class="title--center">Localiza peça</h2>
-        <form action="javascript:void(0)" class="form_serach_barcode">
-            <input type="text" placeholder="Informe o código">
+        <form action="javascript:void(0)" name="f_consultar" class="form_serach_barcode">
+            <input type="text" name="s" value="000009" placeholder="Informe o código">
             <button type="submit">
                 <img src="./src/ico/search.svg">
             </button>
         </form>
         <div class="space"></div>
-        <h2 class="title--destaque">Calça</h2>
-        <div class="block_descricao">
-
-            <small>Descrição</small>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit ipsam exercitationem ratione? </p>
-        </div>
-        <div class="box__subtotal">
-            <b>**** * ****  </b>
-            <small>Código de barras</small>
-        </div>
-        <div class="space"></div>
-        <div class="grid--detalhes_prod">
-            <div class="box__subtotal">
-                <b>***</b>
-                <small>Situação</small>
+        <div class="js-search-success" hidden>
+            <h2 class="title--destaque js-more-pec-title">***</h2>
+            <div class="block_descricao">    
+                <small>Descrição</small>
+                <p class="js-more-pec-description"> *** </p>
             </div>
             <div class="box__subtotal">
-                <b>***</b>
-                <small>Etiqueta</small>
+                <b class="js-more-pec-barcode">**** * ****  </b>
+                <small>Código de barras</small>
             </div>
-            <div class="box__subtotal">
-                <b>00/00/0000</b>
-                <small>Início</small>
-            </div>
-            <div class="box__subtotal">
-                <b>00/00/0000</b>
-                <small>Validade</small>
-            </div>
-            <div class="box__subtotal">
-                <b>00/00/0000</b>
-                <small>Baixa</small>
+            <div class="space"></div>
+            <div class="grid--detalhes_prod">
+                <div class="box__subtotal">
+                    <b class="js-more-pec-status">***</b>
+                    <small>Situação</small>
+                </div>
+                <div class="box__subtotal">
+                    <b class="js-more-pec-tag-name">***</b>
+                    <small>Etiqueta</small>
+                </div>
+                <div class="box__subtotal">
+                    <b class="js-more-pec-init">00/00/0000</b>
+                    <small>Início</small>
+                </div>
+                <div class="box__subtotal">
+                    <b class="js-more-pec-valid">00/00/0000</b>
+                    <small>Validade</small>
+                </div>
+                <div class="box__subtotal">
+                    <b class="js-more-pec-dow">00/00/0000</b>
+                    <small>Baixa</small>
+                </div>
             </div>
         </div>
         <div class="space"></div>
@@ -163,209 +170,72 @@
     </div>
     <div data-route="#/lista-de-pecas">
         <h2 class="title--center">Lista de Peças</h2>
-        <div class="list">
-            <a href="#/detalhe-listagem-peca/1" class="list__item grid--listagem-peca">
-                <span>Calça</span>
-                <b class="list_b_more">
-                    <span>3001</span>
-                    <small>Estoque</small>
-                </b>       
-                <b class="list_b_more">
-                    <span>3001</span>
-                    <small>Em uso</small>
-                </b>       
-                <b class="list_b_more">
-                    <span>3001</span>
-                    <small>Vencida(s)</small>
-                </b>            
-            </a>
-            <a href="#/detalhe-listagem-peca/1" class="list__item grid--listagem-peca">
-                <span>Camiseta</span>
-                <b class="list_b_more">
-                    <span>3001</span>
-                    <small>Estoque</small>
-                </b>       
-                <b class="list_b_more">
-                    <span>3001</span>
-                    <small>Em uso</small>
-                </b>       
-                <b class="list_b_more">
-                    <span>3001</span>
-                    <small>Vencida(s)</small>
-                </b>            
-            </a>           
-            <a href="javascript:void(window.history.back())" class="link--back">
-                <i class="icon icon--back"></i>
-            </a>
-        </div>
+        <div class="list js-list-all-product"> </div>
+        <a href="javascript:void(window.history.back())" class="link--back">
+            <i class="icon icon--back"></i>
+        </a>
     </div>
     <div data-route="#/detalhe-listagem-peca">
         <h2 class="title--center">Camiseta</h2>
         <h3 class="title--destaque">Em Estoque</h3>
-        <div class="list">
-            <a href="#/detalhe-listagem-peca/1" class="list__item grid--listagem-peca-em-estoque">
-                <span>48120</span>
-                <b class="list_b_more">
-                    <span>06/01/2021</span>
-                    <small>Data Cadastro</small>
-                </b>                
-            </a>   
-        </div>
+        <div class="list js-list-stock">  </div>
         <div class="space"></div>
         <h3 class="title--destaque">Em Uso</h3>
-        <div class="list">
-            <a href="#/detalhe-listagem-peca/1" class="list__item grid--listagem-peca-em-uso">
-                <b class="list_b_more">
-                    <span>217520</span>
-                    <small>Código</small>
-                </b>
-                <b class="list_b_more">
-                    <span>Bruno  Vieira</span>
-                    <small>Nome</small>
-                </b>
-                <b class="list_b_more">
-                    <span>06/01/2021</span>
-                    <small>Inicio</small>
-                </b>
-                <b class="list_b_more">
-                    <span>06/01/2021</span>
-                    <small>Validade</small>
-                </b>                
-            </a>
-            <a href="#/detalhe-listagem-peca/1" class="list__item grid--listagem-peca-em-uso">
-                <b class="list_b_more">
-                    <span>217520</span>
-                    <small>Código</small>
-                </b>
-                <b class="list_b_more">
-                    <span>Bruno  Vieira</span>
-                    <small>Nome</small>
-                </b>
-                <b class="list_b_more">
-                    <span>06/01/2021</span>
-                    <small>Inicio</small>
-                </b>
-                <b class="list_b_more">
-                    <span>06/01/2021</span>
-                    <small>Validade</small>
-                </b>                
-            </a>   
-        </div>
+        <div class="list js-lis-in-use">  </div>
         <a href="javascript:void(window.history.back())" class="link--back">
             <i class="icon icon--back"></i>
         </a>
     </div>
     <div data-route="#/lista-de-nomes">
         <h2 class="title--center"> Lista de nomes </h2>
-        <div class="list">
-            <a href="#/peca-por-user/1" class="list__item grid--lista-nomes">
-                <span>Bruno Vieira</span>
-                <b class="list_b_more">
-                    <span>5</span>
-                    <small>E Uso</small>
-                </b>
-                <b class="list_b_more">
-                    <span>1</span>
-                    <small>Vencida(s)</small>
-                </b>         
-            </a>  
-        </div>
-        <div class="btns">
-            <a href="#/entregar/1">Entregar Peça</a>
-            <a href="#/devolver/2">Devolver Peça</a>
-        </div>
+        <div class="list js-list-name"></div>
         <a href="javascript:void(window.history.back())" class="link--back">
             <i class="icon icon--back"></i>
         </a>
     </div>
     <div data-route="#/peca-por-user">
-        <h2 class="title--center"> Peças </h2>
-        <div class="list">
-            <a href="#/detalhe-listagem-peca/1" class="list__item grid--listagem-peca-em-uso">
-                <b class="list_b_more">
-                    <span>217520</span>
-                    <small>Código</small>
-                </b>
-                <b class="list_b_more">
-                    <span>Camiseta</span>
-                    <small>Descrição</small>
-                </b>
-                <b class="list_b_more">
-                    <span>06/01/2021</span>
-                    <small>Inicio</small>
-                </b>
-                <b class="list_b_more">
-                    <span>06/01/2021</span>
-                    <small>Validade</small>
-                </b>
-                <b class="list_b_more">
-                    <span>06/01/2021</span>
-                    <small>Baixa</small>
-                </b>
-                <b class="list_b_more">
-                    <span>Ativo</span>
-                    <small>Status</small>
-                </b>                
-            </a>
-        </div>
+        <h2 class="title--center js-name-user"> Peças </h2>
+        <div class="list js-peca-por-user">  </div>
+        <div class="js-link-delivery"></div>
         <a href="javascript:void(window.history.back())" class="link--back">
             <i class="icon icon--back"></i>
         </a>
     </div>
+    <div data-route="#/peca-detalhes-por-user">
+        <h2 class="title--center js-name-user-detalhes"> Peças </h2>
+        <div class="list js-peca-por-user-detalhes">  </div>
+        <div class="space"></div>
+        <a href="javascript:void(window.history.back())" class="link--back">
+            <i class="icon icon--back"></i>
+        </a>
+    </div>
+
     <div data-route="#/entregar">
         <h2 class="title--center"> Entregar </h2>
-        <form action="javascript:void(0)" class="form_serach_barcode">
-            <input type="text" placeholder="Informe o código">
+        <form action="javascript:void(0)" onsubmit="app.entregar()" name="f_entregar" class="form_serach_barcode">
+            <input type="text" value="" name="id_user" hidden class="js-user-entregar">
+            <input type="text" name="barcode" placeholder="Informe o código">
             <button type="submit">
                 <img src="./src/ico/check.svg">
             </button>
         </form>
         <div class="space"></div>
-        <div class="list">
-            <a href="#/detalhe-listagem-peca/1" class="list__item grid--lista-entrega">
-                <b class="list_b_more">
-                    <span>217520</span>
-                    <small>Código</small>
-                </b>
-                <b class="list_b_more">
-                    <span>Camiseta</span>
-                    <small>Descrição</small>
-                </b>
-                <b class="list_b_more">
-                    <span>06/01/2021</span>
-                    <small>validade</small>
-                </b>       
-            </a>
-        </div>
+        <div class="alert alert-form js-alert-entregar" hidden>mensagem de alerta</div>
         <a href="javascript:void(window.history.back())" class="link--back">
             <i class="icon icon--back"></i>
         </a>
     </div>
     <div data-route="#/devolver">
         <h2 class="title--center"> Devolver </h2>
-        <form action="javascript:void(0)" class="form_serach_barcode">
-            <input type="text" placeholder="Informe o código">
+        <form action="javascript:void(0)" onsubmit="app.devolver()" name="f_devolver" class="form_serach_barcode">
+            <input type="text" value="" name="id_user" hidden class="js-user-devolver">
+            <input type="text" name="barcode" placeholder="Informe o código">
             <button type="submit">
                 <img src="./src/ico/check.svg">
             </button>
         </form>
         <div class="space"></div>
-        <div class="list">
-            <a href="#/detalhe-listagem-peca/1" class="list__item grid--lista-entrega">
-                <b class="list_b_more">
-                    <span>217520</span>
-                    <small>Código</small>
-                </b>
-                <b class="list_b_more">
-                    <span>Camiseta</span>
-                    <small>Descrição</small>
-                </b>
-                <b class="list_b_more">
-                    <span>06/01/2021</span>
-                    <small>validade</small>
-                </b>       
-            </a>
-        </div>
+        <div class="alert alert-form js-alert-devolver" hidden>mensagem de alerta</div>
         <a href="javascript:void(window.history.back())" class="link--back">
             <i class="icon icon--back"></i>
         </a>
@@ -374,9 +244,9 @@
          if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
                 navigator.serviceWorker.register('./sw.js').then(function (registration) {
-                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    // console.log('ServiceWorker registration successful with scope: ', registration.scope);
                 }, function (err) {
-                    console.log('ServiceWorker registration failed: ', err);
+                    // console.log('ServiceWorker registration failed: ', err);
                 });
             });
         }

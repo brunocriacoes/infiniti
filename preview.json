@@ -1,13 +1,27 @@
 {
     "status": true,
-    "msg": "",
+    "mensagem": "",
     "valor": [
         {
-            "codigo_con": 101,
-            "nome_con": "AMBEV INDUSTRIA DE CERVEJAS LTDA",
-            "nome2_con": "AMBEV UBA",
-            "telefone_tel": "",
-            "email_ema": ""
+            "peca_peci": 33,
+            "descricao_pec": "CALCA",
+            "diasvalidade_pec": 180,
+            "qua_total": 0,
+            "qua_vencidas": 0
+        },
+        {
+            "peca_peci": 31,
+            "descricao_pec": "CAMISA",
+            "diasvalidade_pec": 90,
+            "qua_total": 0,
+            "qua_vencidas": 0
+        },
+        {
+            "peca_peci": 39,
+            "descricao_pec": "JAQUETA",
+            "diasvalidade_pec": 365,
+            "qua_total": 0,
+            "qua_vencidas": 0
         }
     ]
 }

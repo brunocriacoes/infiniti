@@ -2,7 +2,7 @@
     "short_name": "Infinite",
     "name": "Infinite",
     "theme_color": "#057fb6",
-    "background_color": "#057fb6",
+    "background_color": "#FFFFFF",
     "display": "standalone",
     "orientation": "portrait",
     "Scope": "/",
