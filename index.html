@@ -38,18 +38,18 @@
             <img class="logo-login" src="./src/img/logo-box-white.png">
             <div class="space"></div>
             <label class="label label--login" for="">Localizador da Empresa</label>
-            <input type="text" class="input input--login" value="INFINITI_DEMO" name="locator">
+            <input type="text" class="input input--login" value-="INFINITI_DEMO" name="locator">
             <label class="label label--login" for="">Usuário</label>
-            <input type="text" class="input input--login" value="AMBEV" name="user">
+            <input type="text" class="input input--login" value-="AMBEV" name="user">
             <label class="label label--login" for="">Senha</label>
-            <input type="password" class="input input--login" value="AMBEV" name="pass">
+            <input type="password" class="input input--login" value-="AMBEV" name="pass">
             <span class="alert"></span>
             <input type="submit" class="btn btn--login" value="ENTRAR">
         </form>
     </div>
-    <div data-route="#/home">
+    <div data-route="#/home" class="bg-white">
         <div class="container">
-            
+            <div class="space"></div>          
             <a href="#/pecas-identificadas" class="card-navigation">
                 <i class="icon"></i>
                 <b>Peças Identificadas</b>
@@ -60,8 +60,9 @@
             </a>
         </div>
     </div>
-    <div data-route="#/pecas-identificadas">
+    <div data-route="#/pecas-identificadas" class="bg-white">
         <div class="container">
+            <div class="space"></div>
             <a href="#/lista-de-nomes" class="card-navigation">
                 <i class="icon icon--users"></i>
                 <b>Lista de Nomes</b>
@@ -122,94 +123,109 @@
     </div>
     <div data-route="#/consultar-pecas">
         <h2 class="title--center">Localiza peça</h2>
-        <form action="javascript:void(0)" name="f_consultar" class="form_serach_barcode">
-            <input type="text" name="s" value="000009" placeholder="Informe o código">
-            <button type="submit">
-                <img src="./src/ico/search.svg">
-            </button>
-        </form>
+        <div class="box-search">
+            <form action="javascript:void(0)" name="f_consultar" class="form_serach_barcode">
+                <input type="text" name="s" value-="000009" placeholder="Informe o código">
+                <button type="submit">
+                    <img src="./src/ico/search.svg">
+                </button>
+            </form>
+        </div>
         <div class="space"></div>
         <div class="js-search-success" hidden>
-            <h2 class="title--destaque js-more-pec-title">***</h2>
-            <div class="block_descricao">    
-                <small>Descrição</small>
-                <p class="js-more-pec-description"> *** </p>
+            <div class="box_label">
+                <div class="grid--detalhes_prod">
+                    <div>
+                        <b class="js-more-pec-title">***</b>
+                        <small>Descrição</small>
+                    </div>
+                    <div class="">
+                        <b class="js-more-pec-barcode">**** * ****  </b>
+                        <small>Código de barras</small>
+                    </div>
+                </div>
+                <br>
+                <div class="grid--detalhes_prod">
+                    <div class="">
+                        <b class="js-more-pec-status">***</b>
+                        <small>Situação</small>
+                    </div>
+                    <div class="">
+                        <b class="js-more-pec-tag-name">***</b>
+                        <small>Etiqueta</small>
+                    </div>                    
+                </div>
+                <br>
+                <div class="l-3">
+                    <div class="">
+                        <b class="js-more-pec-init">00/00/0000</b>
+                        <small>Início</small>
+                    </div>
+                    <div class="">
+                        <b class="js-more-pec-valid">00/00/0000</b>
+                        <small>Validade</small>
+                    </div>
+                    <div class="">
+                        <b class="js-more-pec-dow">00/00/0000</b>
+                        <small>Baixa</small>
+                    </div>
+                </div>
             </div>
-            <div class="box__subtotal">
-                <b class="js-more-pec-barcode">**** * ****  </b>
-                <small>Código de barras</small>
-            </div>
-            <div class="space"></div>
-            <div class="grid--detalhes_prod">
-                <div class="box__subtotal">
-                    <b class="js-more-pec-status">***</b>
-                    <small>Situação</small>
-                </div>
-                <div class="box__subtotal">
-                    <b class="js-more-pec-tag-name">***</b>
-                    <small>Etiqueta</small>
-                </div>
-                <div class="box__subtotal">
-                    <b class="js-more-pec-init">00/00/0000</b>
-                    <small>Início</small>
-                </div>
-                <div class="box__subtotal">
-                    <b class="js-more-pec-valid">00/00/0000</b>
-                    <small>Validade</small>
-                </div>
-                <div class="box__subtotal">
-                    <b class="js-more-pec-dow">00/00/0000</b>
-                    <small>Baixa</small>
-                </div>
-            </div>
+        </div>
+        <div class="alert alert-form js-faill-search" hidden>
         </div>
         <div class="space"></div>
         <a href="javascript:void(window.history.back())" class="link--back">
             <i class="icon icon--back"></i>
         </a>
     </div>
-    <div data-route="#/lista-de-pecas">
+    <div data-route="#/lista-de-pecas" class="bg-white">
         <h2 class="title--center">Lista de Peças</h2>
         <div class="list js-list-all-product"> </div>
         <a href="javascript:void(window.history.back())" class="link--back">
             <i class="icon icon--back"></i>
         </a>
     </div>
-    <div data-route="#/detalhe-listagem-peca">
+    <div data-route="#/detalhe-listagem-peca" class="bg-white">
         <h2 class="title--center">Camiseta</h2>
         <h3 class="title--destaque">Em Estoque</h3>
         <div class="list js-list-stock">  </div>
         <div class="space"></div>
         <h3 class="title--destaque">Em Uso</h3>
         <div class="list js-lis-in-use">  </div>
+        <div class="space"></div>
         <a href="javascript:void(window.history.back())" class="link--back">
             <i class="icon icon--back"></i>
         </a>
     </div>
-    <div data-route="#/lista-de-nomes">
+    <div data-route="#/lista-de-nomes" class="bg-white">
         <h2 class="title--center"> Lista de nomes </h2>
         <div class="list js-list-name"></div>
         <a href="javascript:void(window.history.back())" class="link--back">
             <i class="icon icon--back"></i>
         </a>
     </div>
-    <div data-route="#/peca-por-user">
+    <div data-route="#/peca-por-user" class="bg-white">
         <h2 class="title--center js-name-user"> Peças </h2>
+        <title></title>
         <div class="list js-peca-por-user">  </div>
         <div class="js-link-delivery"></div>
         <a href="javascript:void(window.history.back())" class="link--back">
             <i class="icon icon--back"></i>
         </a>
     </div>
-    <div data-route="#/peca-detalhes-por-user">
+    <div data-route="#/peca-detalhes-por-user" class="bg-white">
         <h2 class="title--center js-name-user-detalhes"> Peças </h2>
-        <div class="list js-peca-por-user-detalhes">  </div>
+        <h2 class="title--destaque">ATIVAS</h2>
+        <div class="list js-peca-por-user-detalhes-ativas">  </div>
+        <div class="space"></div>
+        <h2 class="title--destaque">INATIVAS</h2>
+        <div class="list js-peca-por-user-detalhes-inativas">  </div>
         <div class="space"></div>
         <a href="javascript:void(window.history.back())" class="link--back">
             <i class="icon icon--back"></i>
         </a>
     </div>
-
     <div data-route="#/entregar">
         <h2 class="title--center"> Entregar </h2>
         <form action="javascript:void(0)" onsubmit="app.entregar()" name="f_entregar" class="form_serach_barcode">

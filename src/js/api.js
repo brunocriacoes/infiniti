@@ -91,7 +91,8 @@ export default class {
         let playload = res.playload?.valor[0]
         return {
             next: res.next,
-            status: playload?.ativo_peci == 'S' ? 'SIM' : 'NAO',
+            message: res.mensagem,
+            status: playload?.ativo_peci == 'S' ? 'ATIVO' : 'INATIVO',
             id: playload?.autoinc_peci || '***',
             barcode: playload?.codigobarras_peci || '***',
             init: playload?.completadoem_peci || '***',
@@ -100,7 +101,7 @@ export default class {
             user: playload?.funcionario_peci || '***',
             name: playload?.nome_peci || '***',
             stock: playload?.peca_peci || '***',
-            description: '***',
+            description: playload?.descricao_pec || '***',
             tag_name: '***'
         }
     }

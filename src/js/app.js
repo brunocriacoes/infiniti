@@ -59,19 +59,22 @@ export default class {
             this.load(true)
             let res = await api.info_piece_by_barcode($form.s.value)
             let $box = document.querySelector('.js-search-success')
+            let $message = document.querySelector('.js-faill-search')
             if (res.next) {
                 $box.removeAttribute('hidden')
+                $message.setAttribute('hidden', '')
             } else {
+                $message.removeAttribute('hidden')
+                $message.innerHTML =  res.message
                 $box.setAttribute('hidden', '')
             }
-            document.querySelector('.js-more-pec-title').innerHTML = res.tag_name
+            document.querySelector('.js-more-pec-title').innerHTML = res.description
             document.querySelector('.js-more-pec-barcode').innerHTML = res.barcode
             document.querySelector('.js-more-pec-status').innerHTML = res.status
             document.querySelector('.js-more-pec-tag-name').innerHTML = res.name
             document.querySelector('.js-more-pec-init').innerHTML = res.init
             document.querySelector('.js-more-pec-valid').innerHTML = res.valid
             document.querySelector('.js-more-pec-dow').innerHTML = res.dow
-            document.querySelector('.js-more-pec-description').innerHTML = res.description
             this.load(false)
         })
     }
@@ -128,32 +131,62 @@ export default class {
         this.load(true)
         let res = await api.get_piece_by_name_id(id_func, id_pec)
         document.querySelector('.js-name-user-detalhes').innerHTML = res[0]?.user
-        document.querySelector('.js-peca-por-user-detalhes').innerHTML = res.map(pec => `
-            <a class="list__item grid--listagem-peca-em-uso">
-                <b class="list_b_more">
-                    <span>${pec.barcode}</span>
-                    <small>Código</small>                  
-                </b>
-                <b class="list_b_more">
-                    <span>${pec.name}</span>
-                    <small>Descricao</small>
-                </b>
-                <b class="list_b_more">
-                    <span>${pec.init}</span>
-                    <small>Inicio</small>
-                </b>    
-                <b class="list_b_more">
-                    <span>${pec.valid}</span>
-                    <small>Validade</small>
-                </b>    
-                <b class="list_b_more">
-                    <span>${pec.dow}</span>
-                    <small>Baixa</small>
-                </b>       
-                <b class="list_b_more">
-                    <span>${pec.status}</span>
-                    <small>Ativo</small>
-                </b>            
+        document.querySelector('.js-peca-por-user-detalhes-ativas').innerHTML = res.filter( x => x.status == 'SIM' ).map(pec => `
+            <a class="list__item ">
+                <div class="l-2">
+                    <b class="list_b_more">
+                        <span>${pec.barcode}</span>
+                        <small>Código</small>                  
+                    </b>
+                    <b class="list_b_more">
+                        <span>${pec.name}</span>
+                        <small>Descricao</small>
+                    </b>
+                </div>
+                <br>
+                <div class="l-3">
+                    <b class="list_b_more">
+                        <span>${pec.init}</span>
+                        <small>Inicio</small>
+                    </b>    
+                    <b class="list_b_more">
+                        <span>${pec.valid}</span>
+                        <small>Validade</small>
+                    </b>    
+                    <b class="list_b_more">
+                        <span>${pec.dow}</span>
+                        <small>Baixa</small>
+                    </b>       
+                </div>                   
+            </a>
+        ` ).join('')
+        document.querySelector('.js-peca-por-user-detalhes-inativas').innerHTML = res.filter( x => x.status != 'SIM' ).map(pec => `
+            <a class="list__item ">
+                <div class="l-2">
+                    <b class="list_b_more">
+                        <span>${pec.barcode}</span>
+                        <small>Código</small>                  
+                    </b>
+                    <b class="list_b_more">
+                        <span>${pec.name}</span>
+                        <small>Descricao</small>
+                    </b>
+                </div>
+                <br>
+                <div class="l-3">
+                    <b class="list_b_more">
+                        <span>${pec.init}</span>
+                        <small>Inicio</small>
+                    </b>    
+                    <b class="list_b_more">
+                        <span>${pec.valid}</span>
+                        <small>Validade</small>
+                    </b>    
+                    <b class="list_b_more">
+                        <span>${pec.dow}</span>
+                        <small>Baixa</small>
+                    </b>       
+                </div>                   
             </a>
         ` ).join('')
         this.load(false)

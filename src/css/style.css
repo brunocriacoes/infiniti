@@ -248,7 +248,7 @@ body {
 }
 .list {
     display: grid;
-    grid-gap: 0px;
+    grid-gap: 20px;
 }
 .list > a:nth-child(2n+1) {
     background-color: #EEE;
@@ -433,10 +433,40 @@ body {
     z-index: 9999;
     background-color: rgba(0, 0, 0, .7);
     backdrop-filter: blur(5px);
-
 }
 .pre-load img {
     display: block;
     width: 40px;
-
+}
+.bg-white {
+    background-color: #EEE;
+}
+.box-search {
+    display: block;
+    background-color: var(--azul);
+    padding-bottom: 20px;
+}
+.l-3 {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+.l-2 {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.box_label  {
+    display: block;
+    text-align: center;
+    width: 960px;
+    max-width: 75vw;
+    margin: 0 auto;
+    overflow: hidden;
+    background-color: #f7f7f7;
+    padding: 20px 0;
+    border-radius: 5px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .2);
+}
+.box_label b {
+    display: block;
+    font-size: 12px;
 }
