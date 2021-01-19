@@ -250,9 +250,7 @@ body {
     display: grid;
     grid-gap: 20px;
 }
-.list > a:nth-child(2n+1) {
-    background-color: #EEE;
-}
+
 .list > .list__item {
     display: grid;
     background-color: #f7f7f7;
