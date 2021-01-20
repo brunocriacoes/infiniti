@@ -100,8 +100,9 @@ export default class {
         this.load(true)
         let res = await api.get_all_piece_by_name_id(user_id)
         document.querySelector('.js-name-user').innerHTML = name
+        
         document.querySelector('.js-peca-por-user').innerHTML = res.playload.map(pec => `
-            <a href="#/peca-detalhes-por-user/${user_id}/${pec.id}" onclick="app.peca_detelhe_user(${user_id}, ${pec.id})" class="list__item grid--lista-nomes">
+            <a href="#/peca-detalhes-por-user/${user_id}/${pec.id}" onclick="app.peca_detelhe_user(${user_id}, ${pec.id}, '${name}')" class="list__item grid--lista-nomes">
                 <b class="list_b_more">
                     <span>${pec.name}</span>                    
                 </b>
@@ -127,10 +128,13 @@ export default class {
         document.querySelector('.js-user-entregar').value = id
         document.querySelector('.js-user-devolver').value = id
     }
-    async peca_detelhe_user(id_func, id_pec) {
+    async peca_detelhe_user(id_func, id_pec, name) {
         this.load(true)
         let res = await api.get_piece_by_name_id(id_func, id_pec)
-        document.querySelector('.js-name-user-detalhes').innerHTML = res[0]?.user
+        if ( res.length < 1 ) {
+            this.alert( 'Peças não encontradas.', 'js-alert-not-peca' )
+        }
+        document.querySelector('.js-name-user-detalhes').innerHTML = name
         document.querySelector('.js-peca-por-user-detalhes-ativas').innerHTML = res.filter( x => x.status == 'SIM' ).map(pec => `
             <a class="list__item ">
                 <div class="l-2">

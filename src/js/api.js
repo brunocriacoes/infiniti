@@ -117,9 +117,13 @@ export default class {
         return res
     }
     async get_piece_stock_by_id(id) {
-        return await this.get_api('/lerpecasestoque', { pec: id })
+        let res = await this.get_api('/lerpecasestoque', { pec: id })
+        res.playload.valor = Array.from( res.playload.valor)
+        return res
     }
     async get_piece_in_use_by_id(id) {
-        return await this.get_api('/lerpecasuso', { pec: id })
+        let res = await this.get_api('/lerpecasuso', { pec: id })
+        res.playload.valor = Array.from( res.playload.valor)
+        return res
     }
 }
