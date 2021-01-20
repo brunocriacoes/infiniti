@@ -40,7 +40,7 @@ export default class {
     }
     async get_name() {
         let res = await this.get_api('/lernomes', {})
-        res.playload = res.playload.valor.map(user => ({
+        res.playload = Array.from( res?.playload?.valor)?.map(user => ({
             id: user.autoinc,
             departament: user.departamento,
             wardrobe: user.armario,
@@ -58,7 +58,7 @@ export default class {
     }
     async get_all_piece_by_name_id(id) {
         let res = await this.get_api('/lerpecasnome', { fun: id })
-        res.playload = res.playload.valor.map(piece => ({
+        res.playload = Array.from( res?.playload?.valor)?.map(piece => ({
             id: piece.peca_peci,
             name: piece.descricao_pec,
             day_shelf_life: piece.diasvalidade_pec,
@@ -69,7 +69,7 @@ export default class {
     }
     async get_piece_by_name_id(id_name, id_piece) {
         let res = await this.get_api('/lerpecasIdentNome', { fun: id_name, pec: id_piece })
-        res = res?.playload?.valor?.map( pec => ({
+        res = Array.from( res?.playload?.valor)?.map( pec => ({
             status: pec?.ativo_peci == "S" ? 'SIM' : 'NAO',
             barcode: pec?.codigobarras_peci,
             init: pec?.completadoem_peci,
