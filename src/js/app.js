@@ -5,14 +5,15 @@ export default class {
     store = {}
     constructor() {
         (async () => {
-            await this.on_logged()
+            let res = await this.on_logged()
+            if( !res.next ) return false
             await this.render_logo()
             await this.load_api()
             await this.render_pecas()
             await this.list_all_products()
+            this.consultar()
+            this.list_names()
         })()
-        this.consultar()
-        this.list_names()
     }
     toggle_search() {
         document.querySelector('.js-search-link').classList.toggle('active')
@@ -21,10 +22,13 @@ export default class {
     search() {
         this.toggle_search()
     }
-    on_logged() {
+    async on_logged() {
+        let user = JSON.parse(atob(api.get_token()))
+        let res = await api.login( user.login, user.password )
         if (api.get_token() === null) {
             window.location.href = "#/login"
         }
+        return res
     }
     async login() {
         let form = document.f_login
@@ -65,7 +69,7 @@ export default class {
                 $message.setAttribute('hidden', '')
             } else {
                 $message.removeAttribute('hidden')
-                $message.innerHTML =  res.message
+                $message.innerHTML = res.message
                 $box.setAttribute('hidden', '')
             }
             document.querySelector('.js-more-pec-title').innerHTML = res.description
@@ -86,7 +90,7 @@ export default class {
                 <span>${user.name}</span>
                 <b class="list_b_more">
                     <span>${user.piece_total}</span>
-                    <small>E Uso</small>
+                    <small>Em Uso</small>
                 </b>
                 <b class="list_b_more">
                     <span>${user.piece_total_invalid}</span>
@@ -100,7 +104,7 @@ export default class {
         this.load(true)
         let res = await api.get_all_piece_by_name_id(user_id)
         document.querySelector('.js-name-user').innerHTML = name
-        
+
         document.querySelector('.js-peca-por-user').innerHTML = res.playload.map(pec => `
             <a href="#/peca-detalhes-por-user/${user_id}/${pec.id}" onclick="app.peca_detelhe_user(${user_id}, ${pec.id}, '${name}')" class="list__item grid--lista-nomes">
                 <b class="list_b_more">
@@ -131,11 +135,11 @@ export default class {
     async peca_detelhe_user(id_func, id_pec, name) {
         this.load(true)
         let res = await api.get_piece_by_name_id(id_func, id_pec)
-        if ( res.length < 1 ) {
-            this.alert( 'Peças não encontradas.', 'js-alert-not-peca' )
+        if (res.length < 1) {
+            this.alert('Peças não encontradas.', 'js-alert-not-peca')
         }
         document.querySelector('.js-name-user-detalhes').innerHTML = name
-        document.querySelector('.js-peca-por-user-detalhes-ativas').innerHTML = res.filter( x => x.status == 'SIM' ).map(pec => `
+        document.querySelector('.js-peca-por-user-detalhes-ativas').innerHTML = res.filter(x => x.status == 'SIM').map(pec => `
             <a class="list__item ">
                 <div class="l-2">
                     <b class="list_b_more">
@@ -164,7 +168,7 @@ export default class {
                 </div>                   
             </a>
         ` ).join('')
-        document.querySelector('.js-peca-por-user-detalhes-inativas').innerHTML = res.filter( x => x.status != 'SIM' ).map(pec => `
+        document.querySelector('.js-peca-por-user-detalhes-inativas').innerHTML = res.filter(x => x.status != 'SIM').map(pec => `
             <a class="list__item ">
                 <div class="l-2">
                     <b class="list_b_more">
@@ -243,7 +247,7 @@ export default class {
         this.load(true)
         let res_estock = await api.get_piece_stock_by_id(id)
         let res_use = await api.get_piece_in_use_by_id(id)
-        
+
         document.querySelector('.js-list-stock').innerHTML = res_estock?.playload?.valor.map(pec => `
             <a class="list__item grid--listagem-peca-em-estoque">
                 <span>${pec?.autoinc_peci}</span>
@@ -279,8 +283,8 @@ export default class {
     load(status) {
         if (status) {
             document.querySelector('.pre-load').removeAttribute('hidden')
-        } else { 
-            document.querySelector('.pre-load').setAttribute( 'hidden', '' )
+        } else {
+            document.querySelector('.pre-load').setAttribute('hidden', '')
         }
     }
 }

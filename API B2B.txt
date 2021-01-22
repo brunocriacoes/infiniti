@@ -20,3 +20,10 @@ http://191.243.198.108:9194/lerpecaident?dwwelcomemessage=eyJsb2NhbGl6YWRvciI6Ik
 
 LINK IMAGE
 http://191.243.198.108:9194/www/lerlogoemp?dwwelcomemessage=eyJsb2NhbGl6YWRvciI6IklORklOSVRJX0RFTU8iLAoibG9naW4iOiJBTUJFViIsCiJwYXNzd29yZCI6IkFNQkVWIn0=
+
+
+
+
+- [ ] lista de peças, quando vai em detalhes não troca o nome pela
+-  - [ ] os codigos de barrão não estão aparecendo os zeros iniciais em estoque
+- [ ] deixar em case localizador e user

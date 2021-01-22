@@ -1,7 +1,7 @@
 export default class {
     PATH_URI = "http://191.243.198.108:9194"
     set_token(token) { return localStorage.setItem('TOKEN', token) }
-    get_token() { return localStorage.getItem('TOKEN') }
+    get_token() { return localStorage.getItem('TOKEN') || btoa('{}') }
     clear_token() { localStorage.removeItem('TOKEN') }
     async get_api(path, params) {
         params = new URLSearchParams(params).toString()
@@ -9,8 +9,8 @@ export default class {
         let con = await fetch(`${this.PATH_URI}${path}?dwwelcomemessage=${token}&${params}&`)
         let res = await con.json()
         return {
-            next: res.status,
-            mensagem: res?.mensagem,
+            next: res.status || false,
+            mensagem: res?.mensagem || 'error',
             playload: res
         }
     }
