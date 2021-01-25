@@ -1,8 +1,8 @@
 export default class {
     PATH_URI = "http://191.243.198.108:9194"
-    set_token(token) { return localStorage.setItem('TOKEN', token) }
-    get_token() { return localStorage.getItem('TOKEN') || btoa('{}') }
-    clear_token() { localStorage.removeItem('TOKEN') }
+    set_token(token) { return sessionStorage.setItem('TOKEN', token) }
+    get_token() { return sessionStorage.getItem('TOKEN') }
+    clear_token() { sessionStorage.removeItem('TOKEN') }
     async get_api(path, params) {
         params = new URLSearchParams(params).toString()
         let token = this.get_token()
@@ -20,6 +20,8 @@ export default class {
             "login": user,
             "password": pass
         }
+        localStorage.setItem( 'localizador', locator );
+        localStorage.setItem( 'login', user );
         let params_json = JSON.stringify(params)
         let hash_64 = btoa(params_json)
         this.set_token(hash_64)

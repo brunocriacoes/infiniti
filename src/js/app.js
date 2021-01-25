@@ -5,8 +5,8 @@ export default class {
     store = {}
     constructor() {
         (async () => {
-            let res = await this.on_logged()
-            if( !res.next ) return false
+            if( !this.on_logged() ) return false
+            this.set_data_login()
             await this.render_logo()
             await this.load_api()
             await this.render_pecas()
@@ -22,18 +22,31 @@ export default class {
     search() {
         this.toggle_search()
     }
+    set_data_login() {
+        let $form = document.f_login   
+        $form.locator.value = localStorage.getItem('localizador') || ''
+        $form.user.value = localStorage.getItem('login') || ''
+    }
     async on_logged() {
-        let user = JSON.parse(atob(api.get_token()))
-        let res = await api.login( user.login, user.password )
         if (api.get_token() === null) {
             window.location.href = "#/login"
+            return false
         }
-        return res
+        return true
     }
     async login() {
         let form = document.f_login
         this.load(true)
-        let res = await api.login(form.locator.value, form.user.value, form.pass.value)
+        let {next} = await api.login(form.locator.value, form.user.value, form.pass.value)
+        if( next ) {
+
+            await this.render_logo()
+            await this.load_api()
+            await this.render_pecas()
+            await this.list_all_products()
+            this.consultar()
+            this.list_names()
+        }
         this.load(false)
     }
     logout() {
@@ -225,7 +238,7 @@ export default class {
         this.load(true)
         let res = await api.get_piece()
         document.querySelector('.js-list-all-product').innerHTML = res.playload.map(pec => `
-            <a href="#/detalhe-listagem-peca/${pec.id}" onclick="app.stock(${pec.id})" class="list__item grid--listagem-peca">
+            <a href="#/detalhe-listagem-peca/${pec.id}" onclick="app.stock(${pec.id}, '${pec.name}')" class="list__item grid--listagem-peca">
                 <span>${pec.name}</span>
                 <b class="list_b_more">
                     <span>${pec.estoque}</span>
@@ -243,14 +256,14 @@ export default class {
         ` ).join('')
         this.load(false)
     }
-    async stock(id) {
+    async stock(id, name) {
         this.load(true)
         let res_estock = await api.get_piece_stock_by_id(id)
         let res_use = await api.get_piece_in_use_by_id(id)
-
+        document.querySelector('.js-more-pec-tile').innerHTML = name
         document.querySelector('.js-list-stock').innerHTML = res_estock?.playload?.valor.map(pec => `
             <a class="list__item grid--listagem-peca-em-estoque">
-                <span>${pec?.autoinc_peci}</span>
+                <span>${pec?.codigobarras_peci}</span>
                 <b class="list_b_more">
                     <span>${pec?.dtcadastro_peci}</span>
                     <small>Data Cadastro</small>
