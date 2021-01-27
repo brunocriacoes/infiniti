@@ -13,6 +13,7 @@ export default class {
             await this.list_all_products()
             this.consultar()
             this.list_names()
+            this.info_user()
         })()
     }
     toggle_search() {
@@ -39,13 +40,13 @@ export default class {
         this.load(true)
         let {next} = await api.login(form.locator.value, form.user.value, form.pass.value)
         if( next ) {
-
             await this.render_logo()
             await this.load_api()
             await this.render_pecas()
             await this.list_all_products()
             this.consultar()
             this.list_names()
+            this.info_user()
         }
         this.load(false)
     }
@@ -69,7 +70,6 @@ export default class {
         ` ).join('')
         document.querySelector('.js-list-pecas').innerHTML = pecas
     }
-
     async consultar() {
         let $form = document.f_consultar
         $form.addEventListener('submit', async () => {
@@ -299,5 +299,8 @@ export default class {
         } else {
             document.querySelector('.pre-load').setAttribute('hidden', '')
         }
+    }
+    info_user() {    
+        document.querySelector('.js-name-user').innerHTML = (api.get_curruent_user()).nome2_con
     }
 }
