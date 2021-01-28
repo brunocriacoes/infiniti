@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=I, initial-scale=1.0">
     <title>Infiniti</title>
-    <link rel="stylesheet" href="./src/css/style.css?version=1.0.5">
+    <link rel="stylesheet" href="./src/css/style.css?version=1.0.6">
     <link rel="shortcut icon" href="./src/img/ico.png" type="image/x-icon">
     <link rel="manifest" href="./manifest.json">
-    <!-- VERSION 1.0.5 -->
+    <!-- VERSION 1.0.6 -->
 </head>
 <body>
     <div class="load" hidden>
@@ -212,7 +212,7 @@
         <title></title>
         <div class="list js-peca-por-user">  </div>
         <div class="js-link-delivery"></div>
-        <a href="javascript:void(window.history.back())" class="link--back">
+        <a href="javascript:void(window.history.back()); app.list_names()" class="link--back">
             <i class="icon icon--back"></i>
         </a>
     </div>
@@ -240,7 +240,7 @@
         </form>
         <div class="space"></div>
         <div class="alert alert-form js-alert-entregar" hidden>mensagem de alerta</div>
-        <a href="javascript:void(window.history.back())" class="link--back">
+        <a href="javascript:void(window.history.back()); app.go_back()" class="link--back">
             <i class="icon icon--back"></i>
         </a>
     </div>
@@ -255,7 +255,7 @@
         </form>
         <div class="space"></div>
         <div class="alert alert-form js-alert-devolver" hidden>mensagem de alerta</div>
-        <a href="javascript:void(window.history.back())" class="link--back">
+        <a href="javascript:void(window.history.back()); app.go_back()" class="link--back">
             <i class="icon icon--back"></i>
         </a>
     </div>
@@ -270,6 +270,6 @@
             });
         }
     </script>
-    <script src="./src/js/main.js?version=1.0.5" type="module"></script>
+    <script src="./src/js/main.js?version=1.0.6" type="module"></script>
 </body>
 </html>

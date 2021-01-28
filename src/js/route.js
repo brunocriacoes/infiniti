@@ -29,14 +29,10 @@ export default class {
                 $routre.setAttribute('hidden', '')
             }
         })
-        
-
         this.pages.forEach(hook => {
             if( window.location.href.indexOf(hook.path) !== -1 ) {
-                let param = url.hash.replace('#', '')
-                param = param.replace(hook.path, '')
+                let param = url.hash.replace('#/', '')
                 param = param.split('/')
-                param = param.filter( x => x.length > 1 )
                 param = param.map( x => x?.replace('%20', ' ') )
                 hook.call_back( param )
             }

@@ -113,10 +113,15 @@ export default class {
         ` ).join('')
         this.load(false)
     }
-    async peca_detelhe(user_id, name) {
+    go_back() {
+        let url = new URL( window.location.href )
+        let parans = url.hash.replace('#/', '')
+        parans = parans.split('/')
+        app.peca_detelhe(parans[1], 'trol')
+    }
+    async peca_detelhe(user_id, name = null) {
         this.load(true)
-        let res = await api.get_all_piece_by_name_id(user_id)
-        document.querySelector('.js-name-user').innerHTML = name
+        let res = await api.get_all_piece_by_name_id(user_id)        
 
         document.querySelector('.js-peca-por-user').innerHTML = res.playload.map(pec => `
             <a href="#/peca-detalhes-por-user/${user_id}/${pec.id}" onclick="app.peca_detelhe_user(${user_id}, ${pec.id}, '${name}')" class="list__item grid--lista-nomes">
@@ -151,7 +156,7 @@ export default class {
         if (res.length < 1) {
             this.alert('Peças não encontradas.', 'js-alert-not-peca')
         }
-        document.querySelector('.js-name-user-detalhes').innerHTML = name
+        document.querySelector('.js-name-user-detalhes').innerHTML = res[0].name
         document.querySelector('.js-peca-por-user-detalhes-ativas').innerHTML = res.filter(x => x.status == 'SIM').map(pec => `
             <a class="list__item ">
                 <div class="l-2">
@@ -218,12 +223,14 @@ export default class {
         let res = await api.delivery_piece_by_name_id($form.id_user.value, $form.barcode.value)
         this.load(false)
         this.alert(res.mensagem, 'js-alert-entregar')
+        $form.barcode.value = ''
     }
     async devolver() {
         let $form = document.f_devolver
         this.load(true)
         let res = await api.giv_back_piece_by_name_id($form.id_user.value, $form.barcode.value)
         this.load(false)
+        $form.barcode.value = ''
         this.alert(res.mensagem, 'js-alert-devolver')
     }
     alert(message, selctor) {
@@ -270,7 +277,6 @@ export default class {
                 </b>                
             </a>   
         `).join('')
-
         document.querySelector('.js-lis-in-use').innerHTML = res_use?.playload?.valor.map(pec => `
             <a class="list__item grid--listagem-peca-em-uso">
                 <b class="list_b_more">
