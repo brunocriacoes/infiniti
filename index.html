@@ -52,11 +52,11 @@
         <div class="container">
             <div class="space"></div>          
             <a href="#/pecas-identificadas" class="card-navigation">
-                <i class="icon"></i>
+                <i class="icon icon--barcode"></i>
                 <b>Peças Identificadas</b>
             </a>
             <a href="#/acompanhamento-de-pecas" class="card-navigation">
-                <i class="icon icon--barcode"></i>
+                <i class="icon"></i>
                 <b>Acompanhamentos de peças</b>
             </a>
         </div>
@@ -72,9 +72,13 @@
                 <i class="icon icon--shirt "></i>
                 <b>Lista de Peças</b>
             </a> 
-            <a href="#/consultar-pecas" class="card-navigation">
+            <a href="#/consultar-pecas" onclick="app.clear_search()" class="card-navigation">
                 <i class="icon icon--barcode"></i>
                 <b>Consultar Peças</b>
+            </a>
+            <a href="#/pecas-por-local" class="card-navigation">
+                <i class="icon icon--place"></i>
+                <b>Peças por Local</b>
             </a>
             <a href="javascript:void(window.history.back())" class="link--back">
                 <i class="icon icon--back"></i>
@@ -208,7 +212,7 @@
         </a>
     </div>
     <div data-route="#/peca-por-user" class="bg-white">
-        <h2 class="title--center js-name-user"> Peças </h2>
+        <h2 class="title--center js-name-peca"> Peças  </h2>
         <title></title>
         <div class="list js-peca-por-user">  </div>
         <div class="js-link-delivery"></div>
@@ -239,7 +243,7 @@
             </button>
         </form>
         <div class="space"></div>
-        <div class="alert alert-form js-alert-entregar" hidden>mensagem de alerta</div>
+        <div class=" js-alert-entregar" ></div>
         <a href="javascript:void(window.history.back()); app.go_back()" class="link--back">
             <i class="icon icon--back"></i>
         </a>

@@ -103,7 +103,7 @@ export default class {
                 <span>${user.name}</span>
                 <b class="list_b_more">
                     <span>${user.piece_total}</span>
-                    <small>Em Uso</small>
+                    <small>Ativas</small>
                 </b>
                 <b class="list_b_more">
                     <span>${user.piece_total_invalid}</span>
@@ -130,7 +130,7 @@ export default class {
                 </b>
                 <b class="list_b_more">
                     <span>${pec.total}</span>
-                    <small>Em Uso</small>
+                    <small>Ativas</small>
                 </b>
                 <b class="list_b_more">
                     <span>${pec.total_invalid}</span>
@@ -138,6 +138,7 @@ export default class {
                 </b>            
             </a>
         ` ).join('')
+        document.querySelector('.js-name-peca').innerHTML = res.playload[0].name
         document.querySelector('.js-link-delivery').innerHTML = `
         <div class="btns">
             <a href="#/entregar/${user_id}" onclick="app.set_user(${user_id})" >Entregar Peça</a>
@@ -217,12 +218,22 @@ export default class {
         ` ).join('')
         this.load(false)
     }
+    history( tag, message ) {
+        let list = JSON.parse( localStorage.getItem( tag ) || '[]' )
+        list = [ message,...list ]
+        list.slice( 0, 5 )
+        localStorage.setItem( tag, JSON.stringify(list) )
+        return list
+        
+    }
     async entregar() {
         this.load(true)
         let $form = document.f_entregar
         let res = await api.delivery_piece_by_name_id($form.id_user.value, $form.barcode.value)
         this.load(false)
-        this.alert(res.mensagem, 'js-alert-entregar')
+        let show_history = this.history( 'ENTREGAR', `<span class="alert alert-form ${res.status ? 'alert-form-success' : 'alert-form-error'}">${res.mensagem}</span>`  )
+        document.querySelector('.js-alert-entregar').innerHTML =  show_history.join('')
+        // this.alert(res.mensagem, 'js-alert-entregar')
         $form.barcode.value = ''
     }
     async devolver() {
@@ -231,7 +242,9 @@ export default class {
         let res = await api.giv_back_piece_by_name_id($form.id_user.value, $form.barcode.value)
         this.load(false)
         $form.barcode.value = ''
-        this.alert(res.mensagem, 'js-alert-devolver')
+        let show_history = this.history( 'DEVOLVER', `<span class="alert alert-form ${res.status ? 'alert-form-success' : 'alert-form-error'}">${res.mensagem}</span>`  )
+        document.querySelector('.js-alert-devolver').innerHTML =  show_history.join('')
+        // this.alert(res.mensagem, 'js-alert-devolver')
     }
     alert(message, selctor) {
         let mem = document.querySelector(`.${selctor}`)
@@ -253,7 +266,7 @@ export default class {
                 </b>       
                 <b class="list_b_more">
                     <span>${pec.uso}</span>
-                    <small>Em uso</small>
+                    <small>Ativas</small>
                 </b>       
                 <b class="list_b_more">
                     <span>${pec.vencidas}</span>
@@ -288,7 +301,7 @@ export default class {
                     <small>Nome</small>
                 </b>
                 <b class="list_b_more">
-                    <span>${pec?.completadoem}</span>
+                    <span>${pec?.completadoem_peci}</span>
                     <small>Inicio</small>
                 </b>
                 <b class="list_b_more">
@@ -308,5 +321,10 @@ export default class {
     }
     info_user() {    
         document.querySelector('.js-name-user').innerHTML = (api.get_curruent_user()).nome2_con
+    }
+    clear_search() {
+        document.f_consultar.s.value = ''
+        document.querySelector('.js-search-success').setAttribute('hidden','')
+        document.querySelector('.js-faill-search').setAttribute('hidden','')
     }
 }

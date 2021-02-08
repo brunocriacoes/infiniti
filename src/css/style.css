@@ -109,6 +109,8 @@ body {
     margin: 0 auto;
     padding: 7px 14px;
 }
+.alert-form-success { background-color: #6ab04c !important; color: #FFF; margin-bottom: 10px; }
+.alert-form-error { background-color: #C00 !important; color: #FFF; margin-bottom: 10px; }
 .card-navigation {
     display: inline-block;
     width: clamp( 270px, 45% , 100% );
@@ -141,6 +143,10 @@ body {
 .icon--barcode {
     mask-image: url('../ico/barcode.svg');
     -webkit-mask-image: url('../ico/barcode.svg');
+}
+.icon--place {
+    mask-image: url('../ico/placeholder.svg');
+    -webkit-mask-image: url('../ico/placeholder.svg');
 }
 .icon--back {
     --size:30px;

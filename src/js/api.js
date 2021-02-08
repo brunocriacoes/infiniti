@@ -128,4 +128,24 @@ export default class {
         res.playload.valor = Array.from( res.playload.valor)
         return res
     }
+    async locais_de_peca() {
+        let res = await this.get_api( '/lerlocais',  {} )
+        if (res.status) {
+            return res.valor
+        }
+        return []
+    }
+    async peca_por_local( local ) {
+        let res = await this.get_api( '/lerpecaslocal',  { local } )
+        if (res.status) {
+            return res.valor
+        }
+        return []
+    }
+    async movimentar_peca( local, barcode ) {
+        let { status, mensagem } = await this.get_api( '/movimentarpecalocal',  { local, barcode } )
+        return { status, mensagem }
+    }
+
+
 }
