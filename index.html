@@ -14,75 +14,74 @@
         <img src="./src/img/logo.png">
     </div>
     <div class="pre-load" hidden>
-        <img src="./src/img/loading.gif" alt="">
+        <img src="./src/img/loading.gif">
     </div>
-    <form action="javascript:void(app.search())" class="search js-search-form">
-        <input type="text" placeholder="O que esta procurando">
-        <button type="submit">
-            <img src="./src/ico/check.svg">
-        </button>
-    </form>
     <div class="menu">
+        <div>
+            <a href="javascript:void(window.history.back())" class="icon ico--menu-prev"></a>   
+        </div>
         <a href="#/home">
             <img src="./src/img/logo-default.png" class="menu__logo js-logo">
         </a>
-        <a href="#/home" class="icon ico--menu-home"></a>        
-        <a href="javascript:void(app.toggle_search())" class="icon ico--menu-search js-search-link"></a>        
-        <a href="javascript:void(app.logout())" class="icon ico--menu-logout"></a>        
+        <div>
+            <a href="javascript:void(app.logout())" class="icon ico--menu-pdf"></a>        
+        </div>
     </div>
     <div class="info_session">
-        <span>AMBEV INDUSTRIA DE CERVEJAS LTD</span> <br>        
-        <strong>Olá, <span class="js-name-user"></span> seja bem vindo </strong>
+        <span class="js-company"></span> <br>        
+        <strong>Olá, <span class="js-username"></span> seja bem vindo </strong>
     </div>
     <div class="skin-login" data-route="#/login">
         <form action="javascript:void(app.login())" name="f_login" class="container container--login">
             <img class="logo-login" src="./src/img/logo-box-white.png">
             <div class="space"></div>
             <label class="label label--login" for="">Localizador da Empresa</label>
-            <input type="text" class="input input--login" value-="INFINITI_DEMO" name="locator">
+            <input type="text" class="input input--login" value-="RICARDO" name="locator">
             <label class="label label--login" for="">Usuário</label>
             <input type="text" class="input input--login" value-="AMBEV_TER" name="user">
             <label class="label label--login" for="">Senha</label>
             <input type="password" class="input input--login" value-="123" name="pass">
-            <span class="alert"></span>
+            <span class="alert js-alert-login"></span>
+            <br>
             <input type="submit" class="btn btn--login" value="ENTRAR">
         </form>
     </div>
     <div data-route="#/home" class="bg-white">
         <div class="container">
-            <div class="space"></div>          
-            <a href="#/pecas-identificadas" class="card-navigation">
-                <i class="icon icon--barcode"></i>
-                <b>Peças Identificadas</b>
-            </a>
-            <a href="#/acompanhamento-de-pecas" class="card-navigation">
-                <i class="icon"></i>
-                <b>Acompanhamentos de peças</b>
-            </a>
+            <div class="space"></div>
+            <div class="grid-btns">
+                <a href="#/pecas-identificadas" class="card-navigation">
+                    <i class="icon icon--barcode"></i>
+                    <b>Peças Identificadas</b>
+                </a>
+                <a href="#/acompanhamento-de-pecas" class="card-navigation">
+                    <i class="icon"></i>
+                    <b>Acompanhamentos de peças</b>
+                </a>
+            </div>        
         </div>
     </div>
     <div data-route="#/pecas-identificadas" class="bg-white">
         <div class="container">
             <div class="space"></div>
-            <a href="#/lista-de-nomes" class="card-navigation">
-                <i class="icon icon--users"></i>
-                <b>Lista de Nomes</b>
-            </a>
-            <a href="#/lista-de-pecas" class="card-navigation">
-                <i class="icon icon--shirt "></i>
-                <b>Lista de Peças</b>
-            </a> 
-            <a href="#/consultar-pecas" onclick="app.clear_search()" class="card-navigation">
-                <i class="icon icon--barcode"></i>
-                <b>Consultar Peças</b>
-            </a>
-            <a href="#/pecas-por-local" class="card-navigation">
-                <i class="icon icon--place"></i>
-                <b>Peças por Local</b>
-            </a>
-            <a href="javascript:void(window.history.back())" class="link--back">
-                <i class="icon icon--back"></i>
-            </a>
+            <div class="grid-btns">
+                <a href="#/lista-de-nomes" class="card-navigation">
+                    <i class="icon icon--users"></i>
+                    <b>Lista de Nomes</b>
+                </a>
+                <a href="#/lista-de-pecas" class="card-navigation">
+                    <i class="icon icon--shirt "></i>
+                    <b>Lista de Peças</b>
+                </a> 
+                <a href="#/consultar-pecas" onclick="app.clear_search()" class="card-navigation">
+                    <i class="icon icon--barcode"></i>
+                    <b>Consultar Peças</b>
+                </a>
+                <a href="#/pecas-por-local" class="card-navigation">
+                    <i class="icon icon--place"></i>
+                    <b>Peças por Local</b>
+                </a>
+            </div>
         </div>
     </div>
     <div data-route="#/acompanhamento-de-pecas" >
@@ -90,8 +89,7 @@
         <a href="javascript:void(window.history.back())" class="link--back">
             <i class="icon icon--back"></i>
         </a>
-    </div>
-    
+    </div>    
     <div data-route="#/detalhe-peca">
         <h2 class="title--center ">Calça</h2>
         <div class="list">
