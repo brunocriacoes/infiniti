@@ -65,7 +65,7 @@
         <div class="container">
             <div class="space"></div>
             <div class="grid-btns">
-                <a href="#/lista-de-nomes" class="card-navigation">
+                <a href="#/lista-de-nomes" onclick="app.lista_de_nomes()" class="card-navigation">
                     <i class="icon icon--users"></i>
                     <b>Lista de Nomes</b>
                 </a>
@@ -73,7 +73,7 @@
                     <i class="icon icon--shirt "></i>
                     <b>Lista de Peças</b>
                 </a> 
-                <a href="#/consultar-pecas" onclick="app.clear_search()" class="card-navigation">
+                <a href="#/consultar-pecas" onclick="app.apagar_consulta()" class="card-navigation">
                     <i class="icon icon--barcode"></i>
                     <b>Consultar Peças</b>
                 </a>
@@ -128,7 +128,7 @@
     <div data-route="#/consultar-pecas">
         <h2 class="title--center">Localiza peça</h2>
         <div class="box-search">
-            <form action="javascript:void(0)" name="f_consultar" class="form_serach_barcode">
+            <form action="javascript:void(app.consultar_peca())" name="f_consultar" class="form_serach_barcode">
                 <input type="text" name="s" value-="000009" placeholder="Informe o código">
                 <button type="submit">
                     <img src="./src/ico/search.svg">
@@ -136,52 +136,9 @@
             </form>
         </div>
         <div class="space"></div>
-        <div class="js-search-success" hidden>
-            <div class="box_label">
-                <div class="grid--detalhes_prod">
-                    <div>
-                        <b class="js-more-pec-title">***</b>
-                        <small>Descrição</small>
-                    </div>
-                    <div class="">
-                        <b class="js-more-pec-barcode">**** * ****  </b>
-                        <small>Código de barras</small>
-                    </div>
-                </div>
-                <br>
-                <div class="grid--detalhes_prod">
-                    <div class="">
-                        <b class="js-more-pec-status">***</b>
-                        <small>Situação</small>
-                    </div>
-                    <div class="">
-                        <b class="js-more-pec-tag-name">***</b>
-                        <small>Etiqueta</small>
-                    </div>                    
-                </div>
-                <br>
-                <div class="l-3">
-                    <div class="">
-                        <b class="js-more-pec-init">00/00/0000</b>
-                        <small>Início</small>
-                    </div>
-                    <div class="">
-                        <b class="js-more-pec-valid">00/00/0000</b>
-                        <small>Validade</small>
-                    </div>
-                    <div class="">
-                        <b class="js-more-pec-dow">00/00/0000</b>
-                        <small>Baixa</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="alert alert-form js-faill-search" hidden>
-        </div>
+        <div class="js-search-success"></div>
+        <div class="js-fail-consulta" ></div>
         <div class="space"></div>
-        <a href="javascript:void(window.history.back())" class="link--back">
-            <i class="icon icon--back"></i>
-        </a>
     </div>
     <div data-route="#/lista-de-pecas" class="bg-white">
         <h2 class="title--center">Lista de Peças</h2>
@@ -205,18 +162,13 @@
     <div data-route="#/lista-de-nomes" class="bg-white">
         <h2 class="title--center"> Lista de Nomes </h2>
         <div class="list js-list-name"></div>
-        <a href="javascript:void(window.history.back())" class="link--back">
-            <i class="icon icon--back"></i>
-        </a>
+        <div class="space"></div>
     </div>
     <div data-route="#/peca-por-user" class="bg-white">
         <h2 class="title--center js-name-peca"> Peças  </h2>
         <title></title>
         <div class="list js-peca-por-user">  </div>
         <div class="js-link-delivery"></div>
-        <a href="javascript:void(window.history.back()); app.list_names()" class="link--back">
-            <i class="icon icon--back"></i>
-        </a>
     </div>
     <div data-route="#/peca-detalhes-por-user" class="bg-white">
         <h2 class="title--center js-name-user-detalhes"> Peças </h2>
@@ -233,7 +185,7 @@
     </div>
     <div data-route="#/entregar">
         <h2 class="title--center"> Entregar </h2>
-        <form action="javascript:void(0)" onsubmit="app.entregar()" name="f_entregar" class="form_serach_barcode">
+        <form action="javascript:void(0)" onsubmit="app.entregar_peca()" name="f_entregar" class="form_serach_barcode">
             <input type="text" value="" name="id_user" hidden class="js-user-entregar">
             <input type="text" name="barcode" placeholder="Informe o código">
             <button type="submit">
@@ -242,13 +194,10 @@
         </form>
         <div class="space"></div>
         <div class=" js-alert-entregar" ></div>
-        <a href="javascript:void(window.history.back()); app.go_back()" class="link--back">
-            <i class="icon icon--back"></i>
-        </a>
     </div>
     <div data-route="#/devolver">
         <h2 class="title--center"> Devolver </h2>
-        <form action="javascript:void(0)" onsubmit="app.devolver()" name="f_devolver" class="form_serach_barcode">
+        <form action="javascript:void(0)" onsubmit="app.devolver_peca()" name="f_devolver" class="form_serach_barcode">
             <input type="text" value="" name="id_user" hidden class="js-user-devolver">
             <input type="text" name="barcode" placeholder="Informe o código">
             <button type="submit">
@@ -256,10 +205,7 @@
             </button>
         </form>
         <div class="space"></div>
-        <div class="alert alert-form js-alert-devolver" hidden>mensagem de alerta</div>
-        <a href="javascript:void(window.history.back()); app.go_back()" class="link--back">
-            <i class="icon icon--back"></i>
-        </a>
+        <div class="alert-form js-alert-devolver" ></div>
     </div>
     <script>
          if ('serviceWorker' in navigator) {
