@@ -4,7 +4,7 @@ export default {
         let uri = "http://191.243.198.108:9194"
         params.dwwelcomemessage = cache.token
         let paser_params = new URLSearchParams(params).toString()
-        try {            
+        try {
             return await (await fetch(`${uri}${path}?${paser_params}`)).json()
         } catch (error) {
             return await { status: false, message: 'O servidor demorou a responder, tente novamente mais tarde' }
@@ -57,7 +57,7 @@ export default {
     async pecas_por_local(local) {
         return await this.post('/lerpecaslocal', { local })
     },
-    async movimentar_peca(local, barcode) {
-        return await this.post('/movimentarpecalocal', { local, barcode })
+    async movimentar_peca(local, codbarras) {
+        return await this.post('/movimentarpecalocal', { local, codbarras })
     },
 }

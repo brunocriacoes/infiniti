@@ -125,72 +125,110 @@ export default {
                 update: post.valor?.[0]?.dthrlocalizacao_peci,
             },
         }
+    },
+    async lista_pecas() {
+        let { status, valor } = await api.lista_pecas()
+        if (status) {
+            let arr = valor
+            return arr.map(peca => ({
+                id: peca.peca_peci,
+                nome: peca.descricao_pec,
+                estoque: peca.qua_estoque,
+                ativas: peca.qua_uso,
+                vencidas: peca.qua_vencidas,
+            }))
+        }
+        return []
+    },
+    async estoque_de_peca(id, nome) {
+        let { status, valor } = await api.estoque_de_peca(id)
+        if (status) {
+            let arr = valor
+            return arr.map(peca => ({
+                nome,
+                id: peca.autoinc_peci,
+                barcode: peca.codigobarras_peci,
+                cadastro: peca.dtcadastro_peci,
+            }))
+        }
+        return []
+    },
+    async pecas_em_uso(id, nome) {
+        let { status, valor } = await api.pecas_em_uso(id)
+        if (status) {
+            let arr = valor
+            return arr.map(post => ({
+                user: {
+                    id: post.funcionario_peci,
+                    nome: post.nome_peci,
+                    matricula: post.matricula_peci,
+                },
+                peca: {
+                    id: post.peca_peci,
+                    barcode: post.codigobarras_peci,
+                    status: post.ativo_peci == 'S' ? 'SIM' : 'NAO',
+                    nome: post.descricao_pec,
+                    predio: post.predio_peci,
+                    vestiario: post.vestiario_peci,
+                    armario: post.armario_peci,
+                    gaveta: post.gaveta_peci,
+                    setor: post.setor_peci,
+                    departamento: post.departamento_peci,
+                    cadastro: post.completadoem_peci,
+                    validade: post.dtvalidade_peci,
+                    baixa: post.dtbaixa_peci,
+                    localizacao: post.localizacao_peci,
+                    update: post.dthrlocalizacao_peci,
+                },
+                id: post.autoinc_peci,
+            }))
+        }
+        return []
+    },
+    async locais() {
+        let { status, valor } = await api.locais()
+        if (status) {
+            return valor
+        }
+        return []
+    },
+    async pecas_por_local(local) {
+        let { status, valor } = await api.pecas_por_local(local)
+        if (status) {
+            let arr = valor
+            return arr.map(post => ({
+                user: {
+                    matricula: post.matricula_peci,
+                    nome: post.nome_peci,
+                    id: post.funcionario_peci,
+                },
+                peca: {
+                    id: post.peca_peci,
+                    barcode: post.codigobarras_peci,
+                    status: post.ativo_peci == "S" ? "SIM" : "NAO",
+                    predio: post.predio_peci,
+                    vestiario: post.vestiario_peci,
+                    armario: post.armario_peci,
+                    gaveta: post.gaveta_peci,
+                    setor: post.setor_peci,
+                    departamento: post.departamento_peci,
+                    cadastro: post.completadoem_peci,
+                    validade: post.dtvalidade_peci,
+                    baixa: post.dtbaixa_peci,
+                    nome: post.descricao_pec,
+                    localizacao: post.localizacao_peci,
+                    update: post.dthrlocalizacao_peci,
+                },
+                id: post.autoinc_peci,
+            }))
+        }
+        return []
+    },
+    async movimentar_peca(local, barcode) {
+        let { status, mensagem } = await api.movimentar_peca(local, barcode)
+        return {
+            status,
+            message: mensagem
+        }
     }
-
-    // async delivery_piece_by_name_id(id_name, barcode) {
-    //     return await this.get_api('/entregarpecaident', { fun: id_name, codbarras: barcode })
-    // }
-    // async giv_back_piece_by_name_id(id_name, barcode) {
-    //     return await this.get_api('/devolverpecaident', { fun: id_name, codbarras: barcode })
-    // }
-    // async info_piece_by_barcode(barcode) {
-    //     let res = await this.get_api('/lerpecaident', { codbarras: barcode })
-    //     let playload = res.playload?.valor[0]
-    //     return {
-    //         next: res.next,
-    //         message: res.mensagem,
-    //         status: playload?.ativo_peci == 'S' ? 'ATIVO' : 'INATIVO',
-    //         id: playload?.autoinc_peci || '***',
-    //         barcode: playload?.codigobarras_peci || '***',
-    //         init: playload?.completadoem_peci || '***',
-    //         dow: playload?.dtbaixa_peci || '***',
-    //         valid: playload?.dtvalidade_peci || '***',
-    //         user: playload?.funcionario_peci || '***',
-    //         name: playload?.nome_peci || '***',
-    //         stock: playload?.peca_peci || '***',
-    //         description: playload?.descricao_pec || '***',
-    //         tag_name: '***'
-    //     }
-    // }
-    // async get_piece() {
-    //     let res = await this.get_api('/lerpecas', {})
-    //     res.playload = res.playload.valor.map( peca => ({
-    //         name: peca.descricao_pec,
-    //         id: peca.peca_peci,
-    //         estoque: peca.qua_estoque,
-    //         uso: peca.qua_uso,
-    //         vencidas: peca.qua_vencidas
-    //     }) ) 
-    //     return res
-    // }
-    // async get_piece_stock_by_id(id) {
-    //     let res = await this.get_api('/lerpecasestoque', { pec: id })
-    //     res.playload.valor = Array.from( res.playload.valor)
-    //     return res
-    // }
-    // async get_piece_in_use_by_id(id) {
-    //     let res = await this.get_api('/lerpecasuso', { pec: id })
-    //     res.playload.valor = Array.from( res.playload.valor)
-    //     return res
-    // }
-    // async locais_de_peca() {
-    //     let res = await this.get_api( '/lerlocais',  {} )
-    //     if (res.status) {
-    //         return res.valor
-    //     }
-    //     return []
-    // }
-    // async peca_por_local( local ) {
-    //     let res = await this.get_api( '/lerpecaslocal',  { local } )
-    //     if (res.status) {
-    //         return res.valor
-    //     }
-    //     return []
-    // }
-    // async movimentar_peca( local, barcode ) {
-    //     let { status, mensagem } = await this.get_api( '/movimentarpecalocal',  { local, barcode } )
-    //     return { status, mensagem }
-    // }
-
-
 }

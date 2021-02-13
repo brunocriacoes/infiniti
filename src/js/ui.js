@@ -156,7 +156,7 @@ export default {
     },
     set consultar_result(value) {
         this.form_consultar = ''
-        if( value.status ) {
+        if (value.status) {
             document.querySelector('.js-search-success').innerHTML = `
                 <div class="box_label">
                     <div class="grid--detalhes_prod">
@@ -179,7 +179,7 @@ export default {
             document.querySelector('.js-fail-consulta').innerHTML = ` `
         } else {
             document.querySelector('.js-fail-consulta').innerHTML = ` `
-            if( value.message ) {
+            if (value.message) {
                 document.querySelector('.js-fail-consulta').innerHTML = `
                 <span class="alert alert-form">${value.message}</span>
                 `            }
@@ -191,6 +191,136 @@ export default {
             document.querySelector('.js-alert-login').innerHTML = valor
         }
     },
+    set lista_pecas(arr) {
+        let tpl = peca => `
+            <a 
+                href="#/detalhe-listagem-peca/${peca.id}" 
+                onclick="app.estoque(${peca.id}, '${peca.nome}')" 
+                class="list__item grid--listagem-peca"
+            >
+                <span>${peca.nome}</span>
+                <b class="list_b_more">
+                    <span>${peca.estoque}</span>
+                    <small>Estoque</small>
+                </b>       
+                <b class="list_b_more">
+                    <span>${peca.ativas}</span>
+                    <small>Ativas</small>
+                </b>       
+                <b class="list_b_more">
+                    <span>${peca.vencidas}</span>
+                    <small>Vencida(s)</small>
+                </b>            
+            </a>
+        `
+        document.querySelector('.js-list-all-product').innerHTML = arr.map(tpl).join('')
+    },
+    set estoque_de_peca(arr) {
+        let tpl_em_estoque = peca => `
+            <a class="list__item grid--listagem-peca-em-estoque">
+                <span>${peca?.barcode}</span>
+                <b class="list_b_more">
+                    <span>${peca?.cadastro}</span>
+                    <small>Data Cadastro</small>
+                </b>                
+            </a>
+        `
+        document.querySelector('.js-list-stock').innerHTML = arr.map(tpl_em_estoque).join('')
+    },
+    set nome_peca_estoque(value) {
+        document.querySelector('.js-more-pec-tile').innerHTML = value
+    },
+    set pecas_em_uso(arr) {
+        let tpl = post => `
+            <a class="list__item grid--listagem-peca-em-uso">
+                <b class="list_b_more">
+                    <span>${post.peca.barcode}</span> <small> Código </small>
+                </b>
+                <b class="list_b_more">
+                    <span>${post.user.nome}</span> <small> Nome </small>
+                </b>
+                <b class="list_b_more">
+                    <span>${post.peca.cadastro}</span> <small> Inicio </small>
+                </b>
+                <b class="list_b_more">
+                    <span>${post.peca.validade}</span> <small> Validade </small>
+                </b>                
+            </a>
+        `
+        document.querySelector('.js-lis-in-use').innerHTML = arr.map(tpl).join('')
+    },
+    set locais(arr) {
+        let tpl = local => `
+            <a 
+                href="#/lista-pecas-local""
+                class="list__item grid--listagem-locais"
+                onclick="app.pecas_por_local( '${local.localizacao}' )"
+            >
+                <b class="list_b_more">
+                    <span>${local.localizacao}</span> <small> Localização </small>
+                </b>  
+                <b class="list_b_more">
+                    <span>${local.quantidade}</span> <small> Quantidade </small>
+                </b>                
+            </a>
+        `
+        document.querySelector('.js-list-locais').innerHTML = arr.map(tpl).join('')
+    },
+    set pecas_por_local_title(value) {
+        document.querySelector('.js-title-peca-por-local').innerHTML = value
+    },
+    set pecas_por_local(arr) {
+        let tpl = post => `
+            <div class="box-list-locais" onclick="app.active(this)" >
+                <div class="grid--list-locais">
+                    <div class="line-more" > <span> ${post.peca.barcode} </span> <small> Código </small> </div>
+                    <div class="line-more" > <span> ${post.peca.nome} </span> <small> Nome </small> </div>
+                    <div class="icon ico--more"></div>
+                </div>
+                <div class="more">
+                    <span> <b>Funcionario</b>: ${post.user.nome} - ${post.user.matricula} </span>
+                    <span> <b>Status</b>: ${post.peca.status} </span>
+                    <span> <b>Prédio</b>: ${post.peca.predio} </span>
+                    <span> <b>Vestiario</b>: ${post.peca.vestiario} </span>
+                    <span> <b>Armario</b>: ${post.peca.armario} </span>
+                    <span> <b>Gaveta</b>: ${post.peca.gaveta} </span>
+                    <span> <b>Setor</b>: ${post.peca.setor} </span>
+                    <span> <b>Departamento</b>: ${post.peca.departamento} </span>
+                    <span> <b>Cadastro</b>: ${post.peca.cadastro} </span>
+                    <span> <b>Validade</b>: ${post.peca.validade} </span>
+                    <span> <b>Baixa</b>: ${post.peca.baixa} </span>       
+                </div>
+            </div>
+        `
+        document.querySelector('.js-lista-move-pecas').innerHTML = arr.map(tpl).join('')
+    },
+    set btn_mover_peca(status) {
+        let btn = document.querySelector('.js-btn-move-peca')
+        if (status) {
+            btn.removeAttribute('hidden')
+        } else {
+            btn.setAttribute('hidden', '')
+        }
+    },
+    set btn_mover_peca_data_local(local) {
+        document.querySelector('.js-btn-move-peca').setAttribute('data-local', local)
+    },
+    set form_mover_local(value) {
+        document.form_move_local.local.value = value
+    },
+    set form_mover_local_barcode(value) {
+        document.form_move_local.barcode.value = value
+    },
+    get form_move_local() {
+        return {
+            local: document.form_move_local.local.value,
+            barcode: document.form_move_local.barcode.value,
+        }
+    },
+    set history_moving(arr) {
+        let tpl = post => `<span class="alert alert-form ${post.status ? 'alert-form-success' : 'alert-form-error'}">${post.message}</span>`
+        document.querySelector('.js-history-moving').innerHTML = arr.map(tpl).join('')
+    }
 
 }
 

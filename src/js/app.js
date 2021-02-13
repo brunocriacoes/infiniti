@@ -65,133 +65,58 @@ export default {
         let { user_id, barcode } = ui.devolver
         let res = await api.devolver_peca(user_id, barcode)
         cache.devolver = res
-        ui.historico_devolucao = cache.devolver        
+        ui.historico_devolucao = cache.devolver
     },
     apagar_consulta() {
         ui.consultar_result = { status: false }
     },
     async consultar_peca() {
-        let playload = await api.consultar_peca( ui.form_consultar  )
+        let playload = await api.consultar_peca(ui.form_consultar)
         ui.consultar_result = playload
     },
-
-
-    // async render_pecas() {
-    //     let pecas = this.store.pecas.map(peca => `
-    //         <a href="#/detalhe-peca/${peca.id}" onclick="app.peca_detelhe(${peca.id})" class="list__item grid--acompanhamento">
-    //             <span>${peca.name}</span>
-    //             <b>${peca.estoque}</b>            
-    //         </a>
-    //     ` ).join('')
-    //     document.querySelector('.js-list-pecas').innerHTML = pecas
-    // }
-
-    // async list_names() {
-    //     this.load(true)
-    //     let res = await api.get_name()
-    //     document.querySelector('.js-list-name').innerHTML = res.playload.map(user => `
-    //         <a href="#/peca-por-user/${user.id}/${user.name}" onclick="app.peca_detelhe(${user.id}, '${user.name}')" class="list__item grid--lista-nomes">
-    //             <span>${user.name}</span>
-    //             <b class="list_b_more">
-    //                 <span>${user.piece_total}</span>
-    //                 <small>Ativas</small>
-    //             </b>
-    //             <b class="list_b_more">
-    //                 <span>${user.piece_total_invalid}</span>
-    //                 <small>Vencida(s)</small>
-    //             </b>         
-    //         </a>
-    //     ` ).join('')
-    //     this.load(false)
-    // }
-
-
-
-
-    // history( tag, message ) {
-    //     let list = JSON.parse( localStorage.getItem( tag ) || '[]' )
-    //     list = [ message,...list ]
-    //     list.slice( 0, 5 )
-    //     localStorage.setItem( tag, JSON.stringify(list) )
-    //     return list
-
-    // }
-
-    // alert(message, selctor) {
-    //     let mem = document.querySelector(`.${selctor}`)
-    //     mem.innerHTML = message
-    //     mem.removeAttribute('hidden')
-    //     setTimeout(() => {
-    //         mem.setAttribute('hidden', '')
-    //     }, 3000)
-    // }
-    // async list_all_products() {
-    //     this.load(true)
-    //     let res = await api.get_piece()
-    //     document.querySelector('.js-list-all-product').innerHTML = res.playload.map(pec => `
-    //         <a href="#/detalhe-listagem-peca/${pec.id}" onclick="app.stock(${pec.id}, '${pec.name}')" class="list__item grid--listagem-peca">
-    //             <span>${pec.name}</span>
-    //             <b class="list_b_more">
-    //                 <span>${pec.estoque}</span>
-    //                 <small>Estoque</small>
-    //             </b>       
-    //             <b class="list_b_more">
-    //                 <span>${pec.uso}</span>
-    //                 <small>Ativas</small>
-    //             </b>       
-    //             <b class="list_b_more">
-    //                 <span>${pec.vencidas}</span>
-    //                 <small>Vencida(s)</small>
-    //             </b>            
-    //         </a>
-    //     ` ).join('')
-    //     this.load(false)
-    // }
-    // async stock(id, name) {
-    //     this.load(true)
-    //     let res_estock = await api.get_piece_stock_by_id(id)
-    //     let res_use = await api.get_piece_in_use_by_id(id)
-    //     document.querySelector('.js-more-pec-tile').innerHTML = name
-    //     document.querySelector('.js-list-stock').innerHTML = res_estock?.playload?.valor.map(pec => `
-    //         <a class="list__item grid--listagem-peca-em-estoque">
-    //             <span>${pec?.codigobarras_peci}</span>
-    //             <b class="list_b_more">
-    //                 <span>${pec?.dtcadastro_peci}</span>
-    //                 <small>Data Cadastro</small>
-    //             </b>                
-    //         </a>   
-    //     `).join('')
-    //     document.querySelector('.js-lis-in-use').innerHTML = res_use?.playload?.valor.map(pec => `
-    //         <a class="list__item grid--listagem-peca-em-uso">
-    //             <b class="list_b_more">
-    //                 <span>${pec?.codigobarras_peci}</span>
-    //                 <small>Código</small>
-    //             </b>
-    //             <b class="list_b_more">
-    //                 <span>${pec?.nome_peci}</span>
-    //                 <small>Nome</small>
-    //             </b>
-    //             <b class="list_b_more">
-    //                 <span>${pec?.completadoem_peci}</span>
-    //                 <small>Inicio</small>
-    //             </b>
-    //             <b class="list_b_more">
-    //                 <span>${pec?.dtvalidade_peci}</span>
-    //                 <small>Validade</small>
-    //             </b>                
-    //         </a>
-    //     `).join('')
-    //     this.load(false)
-    // }
-    // load(status) {
-    //     ui.loading = status
-    // }
-    // info_user() {    
-    //     ui.corruent_user.username = (api.get_curruent_user()).nome2_con
-    // }
-    // clear_search() {
-    //     document.f_consultar.s.value = ''
-    //     document.querySelector('.js-search-success').setAttribute('hidden','')
-    //     document.querySelector('.js-faill-search').setAttribute('hidden','')
-    // }
+    async lista_pecas() {
+        let playload = await api.lista_pecas()
+        ui.lista_pecas = playload
+    },
+    async estoque_de_peca(id, peca_nome) {
+        let playload = await api.estoque_de_peca(id, peca_nome)
+        ui.estoque_de_peca = playload
+    },
+    async pecas_em_uso(id, peca_nome) {
+        let playload = await api.pecas_em_uso(id, peca_nome)
+        ui.pecas_em_uso = playload
+    },
+    estoque(id, peca_nome) {
+        this.pecas_em_uso(id, peca_nome)
+        this.estoque_de_peca(id, peca_nome)
+        ui.nome_peca_estoque = peca_nome
+    },
+    async locais() {
+        let playload = await api.locais()
+        ui.locais = playload
+    },
+    async pecas_por_local(local) {
+        ui.btn_mover_peca_data_local = local
+        let playload = await api.pecas_por_local(local)
+        ui.pecas_por_local_title = local
+        ui.pecas_por_local = playload
+        if (local != '0 - Sem Movimento' && local != '4 - LAVANDERIA' && local != '5 - DEVOLVIDAS') {
+            ui.btn_mover_peca = true
+        } else {
+            ui.btn_mover_peca = false
+        }
+    },
+    set_local($el) {
+        ui.form_mover_local = $el.getAttribute('data-local')
+    },
+    active(el) {
+        el.classList.toggle('active')
+    },
+    async mover_peca() {
+        let { local, barcode } = ui.form_move_local
+        let playload = await api.movimentar_peca(local, barcode)
+        cache.mover = playload
+        ui.form_mover_local_barcode = ''
+        ui.history_moving = cache.mover
+    },
 }

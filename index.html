@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=I, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="manifest" href="./manifest.json">
     <!-- VERSION 1.0.6 -->
 </head>
+
 <body>
     <div class="load" hidden>
         <img src="./src/img/logo.png">
@@ -18,17 +20,17 @@
     </div>
     <div class="menu">
         <div>
-            <a href="javascript:void(window.history.back())" class="icon ico--menu-prev"></a>   
+            <a href="javascript:void(window.history.back())" class="icon ico--menu-prev"></a>
         </div>
         <a href="#/home">
             <img src="./src/img/logo-default.png" class="menu__logo js-logo">
         </a>
         <div>
-            <a href="javascript:void(app.logout())" class="icon ico--menu-pdf"></a>        
+            <a href="javascript:void(app.logout())" class="icon ico--menu-pdf"></a>
         </div>
     </div>
     <div class="info_session">
-        <span class="js-company"></span> <br>        
+        <span class="js-company"></span> <br>
         <strong>Olá, <span class="js-username"></span> seja bem vindo </strong>
     </div>
     <div class="skin-login" data-route="#/login">
@@ -36,9 +38,9 @@
             <img class="logo-login" src="./src/img/logo-box-white.png">
             <div class="space"></div>
             <label class="label label--login" for="">Localizador da Empresa</label>
-            <input type="text" class="input input--login" value-="RICARDO" name="locator">
+            <input type="text" class="input input--login" value-="ROTOVIC_DEMO" name="locator">
             <label class="label label--login" for="">Usuário</label>
-            <input type="text" class="input input--login" value-="AMBEV_TER" name="user">
+            <input type="text" class="input input--login" value-="MERC_SBC" name="user">
             <label class="label label--login" for="">Senha</label>
             <input type="password" class="input input--login" value-="123" name="pass">
             <span class="alert js-alert-login"></span>
@@ -58,7 +60,7 @@
                     <i class="icon"></i>
                     <b>Acompanhamentos de peças</b>
                 </a>
-            </div>        
+            </div>
         </div>
     </div>
     <div data-route="#/pecas-identificadas" class="bg-white">
@@ -69,27 +71,24 @@
                     <i class="icon icon--users"></i>
                     <b>Lista de Nomes</b>
                 </a>
-                <a href="#/lista-de-pecas" class="card-navigation">
+                <a href="#/lista-de-pecas" onclick="app.lista_pecas()" class="card-navigation">
                     <i class="icon icon--shirt "></i>
                     <b>Lista de Peças</b>
-                </a> 
+                </a>
                 <a href="#/consultar-pecas" onclick="app.apagar_consulta()" class="card-navigation">
                     <i class="icon icon--barcode"></i>
                     <b>Consultar Peças</b>
                 </a>
-                <a href="#/pecas-por-local" class="card-navigation">
+                <a href="#/pecas-por-local" onclick="app.locais()" class="card-navigation">
                     <i class="icon icon--place"></i>
                     <b>Peças por Local</b>
                 </a>
             </div>
         </div>
     </div>
-    <div data-route="#/acompanhamento-de-pecas" >
-        <div class="list js-list-pecas"></div>       
-        <a href="javascript:void(window.history.back())" class="link--back">
-            <i class="icon icon--back"></i>
-        </a>
-    </div>    
+    <div data-route="#/acompanhamento-de-pecas">
+        <div class="list js-list-pecas"></div>
+    </div>
     <div data-route="#/detalhe-peca">
         <h2 class="title--center ">Calça</h2>
         <div class="list">
@@ -117,13 +116,10 @@
                 <b class="list_b_more">
                     <span>06/01/2021</span>
                     <small>En Aberto</small>
-                </b>                
+                </b>
             </a>
         </div>
         <div class="space"></div>
-        <a href="javascript:void(window.history.back())" class="link--back">
-            <i class="icon icon--back"></i>
-        </a>
     </div>
     <div data-route="#/consultar-pecas">
         <h2 class="title--center">Localiza peça</h2>
@@ -137,27 +133,21 @@
         </div>
         <div class="space"></div>
         <div class="js-search-success"></div>
-        <div class="js-fail-consulta" ></div>
+        <div class="js-fail-consulta"></div>
         <div class="space"></div>
     </div>
     <div data-route="#/lista-de-pecas" class="bg-white">
         <h2 class="title--center">Lista de Peças</h2>
         <div class="list js-list-all-product"> </div>
-        <a href="javascript:void(window.history.back())" class="link--back">
-            <i class="icon icon--back"></i>
-        </a>
     </div>
     <div data-route="#/detalhe-listagem-peca" class="bg-white">
         <h2 class="title--center js-more-pec-tile">Camiseta</h2>
         <h3 class="title--destaque">Em Estoque</h3>
-        <div class="list js-list-stock">  </div>
+        <div class="list js-list-stock"> </div>
         <div class="space"></div>
         <h3 class="title--destaque">Em Uso</h3>
-        <div class="list js-lis-in-use">  </div>
+        <div class="list js-lis-in-use"> </div>
         <div class="space"></div>
-        <a href="javascript:void(window.history.back())" class="link--back">
-            <i class="icon icon--back"></i>
-        </a>
     </div>
     <div data-route="#/lista-de-nomes" class="bg-white">
         <h2 class="title--center"> Lista de Nomes </h2>
@@ -165,23 +155,20 @@
         <div class="space"></div>
     </div>
     <div data-route="#/peca-por-user" class="bg-white">
-        <h2 class="title--center js-name-peca"> Peças  </h2>
+        <h2 class="title--center js-name-peca"> Peças </h2>
         <title></title>
-        <div class="list js-peca-por-user">  </div>
+        <div class="list js-peca-por-user"> </div>
         <div class="js-link-delivery"></div>
     </div>
     <div data-route="#/peca-detalhes-por-user" class="bg-white">
         <h2 class="title--center js-name-user-detalhes"> Peças </h2>
         <div class="alert alert-form js-alert-not-peca" hidden></div>
         <h2 class="title--destaque">ATIVAS</h2>
-        <div class="list js-peca-por-user-detalhes-ativas">  </div>
+        <div class="list js-peca-por-user-detalhes-ativas"> </div>
         <div class="space"></div>
         <h2 class="title--destaque">INATIVAS</h2>
-        <div class="list js-peca-por-user-detalhes-inativas">  </div>
+        <div class="list js-peca-por-user-detalhes-inativas"> </div>
         <div class="space"></div>
-        <a href="javascript:void(window.history.back())" class="link--back">
-            <i class="icon icon--back"></i>
-        </a>
     </div>
     <div data-route="#/entregar">
         <h2 class="title--center"> Entregar </h2>
@@ -193,7 +180,7 @@
             </button>
         </form>
         <div class="space"></div>
-        <div class=" js-alert-entregar" ></div>
+        <div class=" js-alert-entregar"></div>
     </div>
     <div data-route="#/devolver">
         <h2 class="title--center"> Devolver </h2>
@@ -205,10 +192,37 @@
             </button>
         </form>
         <div class="space"></div>
-        <div class="alert-form js-alert-devolver" ></div>
+        <div class="alert-form js-alert-devolver"></div>
+    </div>
+    <div data-route="#/pecas-por-local">
+        <h2 class="title--center"> Localização </h2>
+        <div class="list js-list-locais"></div>
+        <div class="space"></div>
+    </div>
+    <div data-route="#/lista-pecas-local">
+        <h2 class="title--center js-title-peca-por-local"> </h2>
+        <a href="#/movimentar-peca" hidden class="btn-move-peca js-btn-move-peca" onclick="app.set_local(this)">
+            Movimentar Peças pra cá
+        </a>
+        <div class="space"></div>
+        <div class="list js-lista-move-pecas"></div>
+        <div class="space"></div>
+    </div>
+    <div data-route="#/movimentar-peca">
+        <h2 class="title--center"> Movimentar Peça </h2>
+        <form action="javascript:void(0)" onsubmit="app.mover_peca()" name="form_move_local"
+            class="form_serach_barcode">
+            <input type="text" value="" name="local" hidden>
+            <input type="text" name="barcode" placeholder="Informe o código">
+            <button type="submit">
+                <img src="./src/ico/check.svg">
+            </button>
+        </form>
+        <div class="space"></div>
+        <div class="js-history-moving"></div>
     </div>
     <script>
-         if ('serviceWorker' in navigator) {
+        if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
                 navigator.serviceWorker.register('./sw.js').then(function (registration) {
                     // console.log('ServiceWorker registration successful with scope: ', registration.scope);
@@ -220,4 +234,5 @@
     </script>
     <script src="./src/js/main.js?version=1.0.6" type="module"></script>
 </body>
+
 </html>

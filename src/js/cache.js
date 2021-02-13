@@ -23,7 +23,7 @@ export default {
         return store.corruent_user
     },
     set token(valor) {
-        if( valor == null) {
+        if (valor == null) {
             sessionStorage.removeItem('TOKEN')
         } else {
             sessionStorage.setItem('TOKEN', valor)
@@ -34,22 +34,32 @@ export default {
     },
     set devolver(valor) {
         let devolvidas = this.devolver
-        devolvidas = [ valor,...devolvidas ]
-        devolvidas.slice( 0, 5 )
+        devolvidas = [valor, ...devolvidas]
+        devolvidas.slice(0, 3)
         localStorage.setItem('DEVOLVER', JSON.stringify(devolvidas))
         return devolvidas
     },
     get devolver() {
-        return JSON.parse( localStorage.getItem('DEVOLVER'), '[]' )
-    },    
+        return JSON.parse(localStorage.getItem('DEVOLVER'), '[]')
+    },
     set entregar(valor) {
         let entregues = this.entregar
-        entregues = [ valor,...entregues ]
-        entregues.slice( 0, 5 )
+        entregues = [valor, ...entregues]
+        entregues.slice(0, 3)
         localStorage.setItem('ENTREGAR', JSON.stringify(entregues))
         return entregues
     },
     get entregar() {
-        return JSON.parse( localStorage.getItem('ENTREGAR'), '[]' )
+        return JSON.parse(localStorage.getItem('ENTREGAR'), '[]')
+    },
+    set mover(valor) {
+        let movidas = this.mover || []
+        movidas = [valor, ...movidas]
+        movidas.slice(0, 3)
+        localStorage.setItem('MOVER', JSON.stringify(movidas))
+        return movidas
+    },
+    get mover() {
+        return JSON.parse(localStorage.getItem('MOVER'), '[]')
     },
 }
