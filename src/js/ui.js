@@ -7,7 +7,9 @@ export default {
             document.querySelector('.js-company').innerHTML = valor
         },
         set logo(valor) {
-            document.querySelector('.js-logo').src = valor
+            if(valor) {
+                document.querySelector('.js-logo').src = valor
+            }
         }
     },
     set loading(status) {
@@ -69,7 +71,6 @@ export default {
             `
     },
     set peca_por_nome(arr) {
-
         document.querySelector('.js-name-user-detalhes').innerHTML = arr?.[0]?.user?.nome
         let tpl = post => `
             <a class="list__item ">

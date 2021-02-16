@@ -6,6 +6,7 @@ const route = new Route('#/home')
 globalThis.app = app
 
 app.start()
+app.is_logged()
 
 route.render()
 

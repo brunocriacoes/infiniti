@@ -27,6 +27,11 @@ export default {
         cache.token = null
         this.go("#/login")
     },
+    is_logged() {
+        if ( !cache.token ) {
+            this.go("#/login")
+        }
+    },
     start() {
         this.info()
         this.cache_login()
@@ -119,4 +124,7 @@ export default {
         ui.form_mover_local_barcode = ''
         ui.history_moving = cache.mover
     },
+    not_logo( $el ) {
+        $el.src = './src/img/logo-default.png'
+    }
 }

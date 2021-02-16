@@ -10,7 +10,7 @@ export default {
             token: cache.token,
             localizador,
             username,
-            logo: `http://191.243.198.108:9194/www/lerlogoemp?dwwelcomemessage=${cache.token}`
+            logo: `//191.243.198.108:9194/www/lerlogoemp?dwwelcomemessage=${cache.token}`
         }
         return playload
     },

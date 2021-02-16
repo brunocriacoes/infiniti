@@ -9,6 +9,11 @@
     <link rel="shortcut icon" href="./src/img/ico.png" type="image/x-icon">
     <link rel="manifest" href="./manifest.json">
     <!-- VERSION 1.0.6 -->
+    <!-- 
+        ROTOVIC_DEMO
+        MERC_SBC
+        123 
+    -->
 </head>
 
 <body>
@@ -23,7 +28,7 @@
             <a href="javascript:void(window.history.back())" class="icon ico--menu-prev"></a>
         </div>
         <a href="#/home">
-            <img src="./src/img/logo-default.png" class="menu__logo js-logo">
+            <img src="./src/img/logo-default.png" onerror="app.not_logo(this)" class="menu__logo js-logo">
         </a>
         <div>
             <a href="javascript:void(app.logout())" class="icon ico--menu-pdf"></a>
@@ -38,11 +43,11 @@
             <img class="logo-login" src="./src/img/logo-box-white.png">
             <div class="space"></div>
             <label class="label label--login" for="">Localizador da Empresa</label>
-            <input type="text" class="input input--login" value-="ROTOVIC_DEMO" name="locator">
+            <input type="text" class="input input--login" value="" name="locator">
             <label class="label label--login" for="">Usuário</label>
-            <input type="text" class="input input--login" value-="MERC_SBC" name="user">
+            <input type="text" class="input input--login" value="" name="user">
             <label class="label label--login" for="">Senha</label>
-            <input type="password" class="input input--login" value-="123" name="pass">
+            <input type="password" class="input input--login" value="" name="pass">
             <span class="alert js-alert-login"></span>
             <br>
             <input type="submit" class="btn btn--login" value="ENTRAR">
@@ -56,7 +61,7 @@
                     <i class="icon icon--barcode"></i>
                     <b>Peças Identificadas</b>
                 </a>
-                <a href="#/acompanhamento-de-pecas" class="card-navigation">
+                <a data-href="#/acompanhamento-de-pecas" class="card-navigation">
                     <i class="icon"></i>
                     <b>Acompanhamentos de peças</b>
                 </a>
