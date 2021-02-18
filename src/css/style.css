@@ -563,3 +563,7 @@ body {
     cursor: pointer;
     border: 1px solid #EEE;
 }
+.gap-back {
+    display: block;
+    width: 30px;
+}

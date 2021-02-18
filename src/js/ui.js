@@ -253,7 +253,7 @@ export default {
     set locais(arr) {
         let tpl = local => `
             <a 
-                href="#/lista-pecas-local""
+                href="#/lista-pecas-local/${local.localizacao}"
                 class="list__item grid--listagem-locais"
                 onclick="app.pecas_por_local( '${local.localizacao}' )"
             >
@@ -321,6 +321,14 @@ export default {
     set history_moving(arr) {
         let tpl = post => `<span class="alert alert-form ${post.status ? 'alert-form-success' : 'alert-form-error'}">${post.message}</span>`
         document.querySelector('.js-history-moving').innerHTML = arr.map(tpl).join('')
+    },
+    set go_back( truefalse ) {
+        let $btn = document.querySelector('.js-go-back')
+        if ( truefalse ) {
+            $btn.removeAttribute( 'hidden' )
+        } else {
+            $btn.setAttribute( 'hidden', '' )
+        }
     }
 
 }

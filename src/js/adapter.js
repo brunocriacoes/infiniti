@@ -35,12 +35,13 @@ export default {
         }
         return []
     },
-    async lista_de_peca_por_nome(user_id, peca_id) {
-        let { valor, status } = await api.lista_de_peca_por_nome(user_id, peca_id)
+    async lista_de_peca_por_nome(user_id, user_name) {    
+        let { valor, status } = await api.lista_de_peca_por_nome(user_id)
         if (status) {
             let playload = valor
             return valor.map(peca => ({
                 user_id,
+                user_name,
                 id: peca.peca_peci,
                 nome: peca.descricao_pec,
                 validade: peca.diasvalidade_pec,

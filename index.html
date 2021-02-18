@@ -17,15 +17,12 @@
 </head>
 
 <body>
-    <div class="load" hidden>
-        <img src="./src/img/logo.png">
-    </div>
     <div class="pre-load" hidden>
         <img src="./src/img/loading.gif">
     </div>
     <div class="menu">
-        <div>
-            <a href="javascript:void(window.history.back())" class="icon ico--menu-prev"></a>
+        <div class="gap-back">
+            <a href="javascript:void(window.history.back())" class="icon ico--menu-prev js-go-back" hidden></a>
         </div>
         <a href="#/home">
             <img src="./src/img/logo-default.png" onerror="app.not_logo(this)" class="menu__logo js-logo">

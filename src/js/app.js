@@ -46,50 +46,68 @@ export default {
         ui.fomulario_login.username = cache.username
     },
     async lista_de_nomes() {
+        ui.loading = true
         let playload = await api.lista_de_nomes()
         ui.lista_de_nomes = playload
+        ui.loading = false
     },
     async lista_de_peca_por_nome(id, user_name) {
+        ui.loading = true
         let playload = await api.lista_de_peca_por_nome(id, user_name)
         ui.lista_de_peca_por_nome = playload
+        ui.loading = false
     },
     async peca_por_nome(id_name, id_piece) {
+        ui.loading = true
         let playload = await api.peca_por_nome(id_name, id_piece)
         ui.peca_por_nome = playload
+        ui.loading = false
     },
     set_user(id) {
         ui.set_user = id
     },
     async entregar_peca() {
+        ui.loading = true
         let { user_id, barcode } = ui.entregar
         let res = await api.entregar_peca(user_id, barcode)
         cache.entregar = res
         ui.historico_entregas = cache.entregar
+        ui.loading = false
     },
     async devolver_peca() {
+        ui.loading = true
         let { user_id, barcode } = ui.devolver
         let res = await api.devolver_peca(user_id, barcode)
         cache.devolver = res
         ui.historico_devolucao = cache.devolver
+        ui.loading = false
     },
     apagar_consulta() {
         ui.consultar_result = { status: false }
     },
     async consultar_peca() {
+        ui.loading = true
         let playload = await api.consultar_peca(ui.form_consultar)
         ui.consultar_result = playload
+        ui.loading = false
     },
     async lista_pecas() {
+        ui.loading = true
         let playload = await api.lista_pecas()
         ui.lista_pecas = playload
+        ui.loading = false
     },
     async estoque_de_peca(id, peca_nome) {
+        ui.loading = true
         let playload = await api.estoque_de_peca(id, peca_nome)
         ui.estoque_de_peca = playload
+        ui.loading = false
     },
     async pecas_em_uso(id, peca_nome) {
+        ui.loading = true
         let playload = await api.pecas_em_uso(id, peca_nome)
         ui.pecas_em_uso = playload
+        ui.loading = false
     },
     estoque(id, peca_nome) {
         this.pecas_em_uso(id, peca_nome)
@@ -97,10 +115,13 @@ export default {
         ui.nome_peca_estoque = peca_nome
     },
     async locais() {
+        ui.loading = true
         let playload = await api.locais()
         ui.locais = playload
+        ui.loading = false
     },
     async pecas_por_local(local) {
+        ui.loading = true
         ui.btn_mover_peca_data_local = local
         let playload = await api.pecas_por_local(local)
         ui.pecas_por_local_title = local
@@ -110,6 +131,7 @@ export default {
         } else {
             ui.btn_mover_peca = false
         }
+        ui.loading = false
     },
     set_local($el) {
         ui.form_mover_local = $el.getAttribute('data-local')
@@ -118,13 +140,23 @@ export default {
         el.classList.toggle('active')
     },
     async mover_peca() {
+        ui.loading = true
         let { local, barcode } = ui.form_move_local
         let playload = await api.movimentar_peca(local, barcode)
         cache.mover = playload
         ui.form_mover_local_barcode = ''
         ui.history_moving = cache.mover
+        ui.loading = false
     },
     not_logo( $el ) {
         $el.src = './src/img/logo-default.png'
+    },
+    go_back() {
+        let path = new URL( window.location.href )
+        if (path.hash == '#/home') {
+            ui.go_back = false
+        } else {
+            ui.go_back = true
+        }
     }
 }

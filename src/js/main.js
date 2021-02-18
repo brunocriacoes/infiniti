@@ -21,12 +21,26 @@ route.add( '/pecas-por-local', parans => {
 } )
 
 route.add( '/detalhe-listagem-peca', parans => {
-    console.log( parans )
     app.estoque(parans[1], 'PEÇA')
+} )
+
+route.add( '/peca-por-user', parans => {
+    app.lista_de_peca_por_nome(parans[1], parans[2])
+} )
+
+route.add( '/peca-detalhes-por-user', parans => {
+    app.peca_por_nome(parans[1], parans[2], parans[3] || '' )
+} )
+
+route.add( '/lista-pecas-local', parans => {
+    app.pecas_por_local( decodeURI(parans[1]) )
 } )
 
 route.render()
 
+app.go_back()
+
 window.onpopstate = () => {
     route.render()
+    app.go_back()
 }
