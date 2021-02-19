@@ -60,4 +60,7 @@ export default {
     async movimentar_peca(local, codbarras) {
         return await this.post('/movimentarpecalocal', { local, codbarras })
     },
+    async historico_movimentacao(codbarras) {
+        return await this.post('/lermovimentacaopeca', { codbarras })
+    },    
 }

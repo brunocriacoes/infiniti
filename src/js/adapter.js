@@ -231,5 +231,19 @@ export default {
             status,
             message: mensagem
         }
+    },
+    async historico_movimentacao( codbarras, name ) {
+        let { status, valor } = await api.historico_movimentacao(codbarras)
+        if (status) {
+            let arr = valor
+            return arr.map(post => ({
+                name,
+                data: post.dthrmovimento,
+                local: post.destino,
+                user: post.usuario,
+                origem: post.docorigem,
+            }))
+        }
+        return []
     }
 }

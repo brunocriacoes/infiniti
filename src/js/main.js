@@ -21,7 +21,7 @@ route.add( '/pecas-por-local', parans => {
 } )
 
 route.add( '/detalhe-listagem-peca', parans => {
-    app.estoque(parans[1], 'PEÇA')
+    app.estoque(parans[1], parans[2])
 } )
 
 route.add( '/peca-por-user', parans => {
@@ -34,6 +34,10 @@ route.add( '/peca-detalhes-por-user', parans => {
 
 route.add( '/lista-pecas-local', parans => {
     app.pecas_por_local( decodeURI(parans[1]) )
+} )
+
+route.add( '/historico-movimentacao', parans => {
+    app.historico_movimentacao( parans[1], decodeURI(parans[2]) )
 } )
 
 route.render()

@@ -28,7 +28,8 @@
             <img src="./src/img/logo-default.png" onerror="app.not_logo(this)" class="menu__logo js-logo">
         </a>
         <div>
-            <a href="javascript:void(app.logout())" class="icon ico--menu-pdf"></a>
+            <a href="javascript:void()" class="icon ico--menu-pdf js-ico-pdf"></a>
+            <a href="javascript:void(app.logout())" class="icon ico--menu-logout js-ico-logout"></a>
         </div>
     </div>
     <div class="info_session">
@@ -143,7 +144,7 @@
         <div class="list js-list-all-product"> </div>
     </div>
     <div data-route="#/detalhe-listagem-peca" class="bg-white">
-        <h2 class="title--center js-more-pec-tile">Camiseta</h2>
+        <h2 class="title--center js-more-pec-tile">Camiseta ok</h2>
         <h3 class="title--destaque">Em Estoque</h3>
         <div class="list js-list-stock"> </div>
         <div class="space"></div>
@@ -222,6 +223,11 @@
         </form>
         <div class="space"></div>
         <div class="js-history-moving"></div>
+    </div>
+    <div data-route="#/historico-movimentacao">
+        <h2 class="title--center js-title-historico"></h2>
+        <div class="list js-historico-list"></div>
+        <div class="space"></div>
     </div>
     <script>
         if ('serviceWorker' in navigator) {

@@ -176,6 +176,8 @@ export default {
                         <div> <b>${value.peca.baixa}</b> <small> Baixa </small> </div>
                     </div>
                 </div>
+                <div class="space"></div>
+                <a class="btn-historico" href="#/historico-movimentacao/${value.peca.barcode}/${value.peca.nome}" conclick="app.historico_movimentacao('${value.peca.barcode}', '${value.peca.nome}')"> MOVIMENTAÇÃO </a>
             `
             document.querySelector('.js-fail-consulta').innerHTML = ` `
         } else {
@@ -195,7 +197,7 @@ export default {
     set lista_pecas(arr) {
         let tpl = peca => `
             <a 
-                href="#/detalhe-listagem-peca/${peca.id}" 
+                href="#/detalhe-listagem-peca/${peca.id}/${peca.nome}" 
                 onclick="app.estoque(${peca.id}, '${peca.nome}')" 
                 class="list__item grid--listagem-peca"
             >
@@ -323,13 +325,41 @@ export default {
         document.querySelector('.js-history-moving').innerHTML = arr.map(tpl).join('')
     },
     set go_back( truefalse ) {
+        let $bt_pdf = document.querySelector('.js-ico-pdf')
+        let $bt_logout = document.querySelector('.js-ico-logout')
         let $btn = document.querySelector('.js-go-back')
         if ( truefalse ) {
             $btn.removeAttribute( 'hidden' )
+            $bt_pdf.removeAttribute( 'hidden' )
+            $bt_logout.setAttribute( 'hidden', '' )
         } else {
             $btn.setAttribute( 'hidden', '' )
+            $bt_pdf.setAttribute( 'hidden', '' )
+            $bt_logout.removeAttribute( 'hidden' )
         }
-    }
+    },
+    set title_historico( value ) {
+        document.querySelector('.js-title-historico').innerHTML = value
+    },
+    set list_historico( arr ) {
+        let tpl = post => `
+            <a class="list__item grid--listagem-peca-em-uso">
+                <b class="list_b_more">
+                    <span>${post.data}</span> <small> Data </small>
+                </b>
+                <b class="list_b_more">
+                    <span>${post.local}</span> <small> Local </small>
+                </b>
+                <b class="list_b_more">
+                    <span>${post.user}</span> <small> User </small>
+                </b>
+                <b class="list_b_more">
+                    <span>${post.origem}</span> <small> Origem </small>
+                </b>                
+            </a>
+        `
+        document.querySelector('.js-historico-list').innerHTML = arr.map(tpl).join('')
+    },
 
 }
 

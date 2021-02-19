@@ -172,6 +172,7 @@ body {
     --size: 30px;
     mask-image: url('../ico/logout.svg');
     -webkit-mask-image: url('../ico/logout.svg');
+    margin: 10px 0;
 }
 .ico--menu-pdf {
     display: inline-block;
@@ -548,6 +549,7 @@ body {
     padding: 0 10px;
     font-size: 12px;
 }
+.btn-historico,
 .btn-move-peca {
     display: block;
     width: 240px;

@@ -121,12 +121,13 @@ export default {
         ui.loading = false
     },
     async pecas_por_local(local) {
+        local = decodeURI( local )
         ui.loading = true
         ui.btn_mover_peca_data_local = local
         let playload = await api.pecas_por_local(local)
         ui.pecas_por_local_title = local
         ui.pecas_por_local = playload
-        if (local != '0 - Sem Movimento' && local != '4 - LAVANDERIA' && local != '5 - DEVOLVIDAS') {
+        if (local != '0 - Sem Movimento' && local != '4 - Lavanderia' && local != '5 - Devolvida') {
             ui.btn_mover_peca = true
         } else {
             ui.btn_mover_peca = false
@@ -158,5 +159,12 @@ export default {
         } else {
             ui.go_back = true
         }
-    }
+    },
+    async historico_movimentacao( barcoded, peca_nome ) {
+        ui.loading = true
+        let playload = await api.historico_movimentacao(barcoded, peca_nome)
+        ui.title_historico = peca_nome
+        ui.list_historico = playload
+        ui.loading = false
+    },
 }
