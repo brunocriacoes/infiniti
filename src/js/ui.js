@@ -60,9 +60,10 @@ export default {
             </a>
         `
         document.querySelector('.js-peca-por-user').innerHTML = arr.map(tpl).join('')
-        let user_id = arr[0].user_id
-        let user_name = arr[0].user_name
-        document.querySelector('.js-name-peca').innerHTML = user_name
+        let user_id = arr[0]?.user_id
+        let user_name = arr[0]?.user_name
+        document.querySelector('.js-name-peca').innerHTML = user_name?.replace( /%20/gi, ' ' )
+        document.querySelector('.js-name-peca-menu').innerHTML = user_name?.replace( /%20/gi, ' ' )
         document.querySelector('.js-link-delivery').innerHTML = `
             <div class="btns">
                 <a href="#/entregar/${user_id}" onclick="app.set_user(${user_id})" >Entregar Peça</a>
@@ -72,6 +73,7 @@ export default {
     },
     set peca_por_nome(arr) {
         document.querySelector('.js-name-user-detalhes').innerHTML = arr?.[0]?.user?.nome
+        document.querySelector('.js-name-user-detalhes-menu').innerHTML = arr?.[0]?.user?.nome
         let tpl = post => `
             <a class="list__item ">
                 <div class="l-2">
@@ -101,8 +103,8 @@ export default {
                 </div>                   
             </a>
         `
-        document.querySelector('.js-peca-por-user-detalhes-ativas').innerHTML = arr.filter(x => x.status == 'SIM').map(tpl).join('')
-        document.querySelector('.js-peca-por-user-detalhes-inativas').innerHTML = arr.filter(x => x.status != 'SIM').map(tpl).join('')
+        document.querySelector('.js-peca-por-user-detalhes-ativas').innerHTML = arr.filter(x => x.peca.status == 'SIM').map(tpl).join('')
+        document.querySelector('.js-peca-por-user-detalhes-inativas').innerHTML = arr.filter(x => x.peca.status != 'SIM').map(tpl).join('')
     },
     set set_user(id) {
         document.querySelector('.js-user-entregar').value = id
@@ -232,6 +234,7 @@ export default {
     },
     set nome_peca_estoque(value) {
         document.querySelector('.js-more-pec-tile').innerHTML = value
+        document.querySelector('.js-more-pec-tile-menu').innerHTML = value
     },
     set pecas_em_uso(arr) {
         let tpl = post => `
@@ -271,6 +274,7 @@ export default {
     },
     set pecas_por_local_title(value) {
         document.querySelector('.js-title-peca-por-local').innerHTML = value
+        document.querySelector('.js-title-peca-por-local-menu').innerHTML = value
     },
     set pecas_por_local(arr) {
         let tpl = post => `
@@ -340,6 +344,7 @@ export default {
     },
     set title_historico( value ) {
         document.querySelector('.js-title-historico').innerHTML = value
+        document.querySelector('.js-title-historico-menu').innerHTML = value
     },
     set list_historico( arr ) {
         let tpl = post => `

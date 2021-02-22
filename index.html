@@ -67,6 +67,10 @@
         </div>
     </div>
     <div data-route="#/pecas-identificadas" class="bg-white">
+        <div class="trilha">
+            <a href="javascript:window.history.go(-1)">Home</a> /
+            <a href="javascript:void(0)">Peças Identificadas</a>
+        </div>
         <div class="container">
             <div class="space"></div>
             <div class="grid-btns">
@@ -125,6 +129,11 @@
         <div class="space"></div>
     </div>
     <div data-route="#/consultar-pecas">
+        <div class="trilha">
+            <a href="javascript:window.history.go(-2)">Home</a> /
+            <a href="javascript:window.history.go(-1)">Peças Identificadas</a> /
+            <a href="javascript:void(0)">Localiza peça</a>
+        </div>
         <h2 class="title--center">Localiza peça</h2>
         <div class="box-search">
             <form action="javascript:void(app.consultar_peca())" name="f_consultar" class="form_serach_barcode">
@@ -140,11 +149,22 @@
         <div class="space"></div>
     </div>
     <div data-route="#/lista-de-pecas" class="bg-white">
+        <div class="trilha">
+            <a href="javascript:window.history.go(-2)">Home</a> /
+            <a href="javascript:window.history.go(-1)">Peças Identificadas</a> /
+            <a href="javascript:void(0)">Lista de Peças</a>
+        </div>
         <h2 class="title--center">Lista de Peças</h2>
         <div class="list js-list-all-product"> </div>
     </div>
     <div data-route="#/detalhe-listagem-peca" class="bg-white">
-        <h2 class="title--center js-more-pec-tile">Camiseta ok</h2>
+        <div class="trilha">
+            <a href="javascript:window.history.go(-3)">Home</a> /
+            <a href="javascript:window.history.go(-2)">Peças Identificadas</a> /
+            <a href="javascript:window.history.go(-1)">Lista de Peças</a> /
+            <a href="javascript:void(0)" class="js-more-pec-tile-menu">{PECA}</a>
+        </div>
+        <h2 class="title--center js-more-pec-tile"></h2>
         <h3 class="title--destaque">Em Estoque</h3>
         <div class="list js-list-stock"> </div>
         <div class="space"></div>
@@ -153,17 +173,34 @@
         <div class="space"></div>
     </div>
     <div data-route="#/lista-de-nomes" class="bg-white">
+        <div class="trilha">
+            <a href="javascript:window.history.go(-2)">Home</a> /
+            <a href="javascript:window.history.go(-1)">Peças Identificadas</a> /
+            <a href="javascript:void(0)">Lista de Nomes</a>
+        </div>
         <h2 class="title--center"> Lista de Nomes </h2>
         <div class="list js-list-name"></div>
         <div class="space"></div>
     </div>
     <div data-route="#/peca-por-user" class="bg-white">
+        <div class="trilha">
+            <a href="javascript:window.history.go(-3)">Home</a> /
+            <a href="javascript:window.history.go(-2)">Peças Identificadas</a> /
+            <a href="javascript:window.history.go(-1)">Lista de Nomes</a> /
+            <a href="javascript:void(0)" class="js-name-peca-menu">Funcionario</a>
+        </div>
         <h2 class="title--center js-name-peca"> Peças </h2>
-        <title></title>
         <div class="list js-peca-por-user"> </div>
         <div class="js-link-delivery"></div>
     </div>
     <div data-route="#/peca-detalhes-por-user" class="bg-white">
+        <div class="trilha">
+            <a href="javascript:window.history.go(-4)">Home</a> /
+            <a href="javascript:window.history.go(-3)">Peças Identificadas</a> /
+            <a href="javascript:window.history.go(-2)">Lista de Nomes</a> /
+            <a href="javascript:window.history.go(-1)" class="js-name-user-detalhes-menu">Funcionario</a> /
+            <a href="javascript:void(0)">Pecas</a>
+        </div>
         <h2 class="title--center js-name-user-detalhes"> Peças </h2>
         <div class="alert alert-form js-alert-not-peca" hidden></div>
         <h2 class="title--destaque">ATIVAS</h2>
@@ -174,6 +211,13 @@
         <div class="space"></div>
     </div>
     <div data-route="#/entregar">
+        <div class="trilha">
+            <a href="javascript:window.history.go(-4)">Home</a> /
+            <a href="javascript:window.history.go(-3)">Peças Identificadas</a> /
+            <a href="javascript:window.history.go(-2)">Lista de Nomes</a> /
+            <a href="javascript:window.history.go(-1)">Funcionario</a> /
+            <a href="javascript:void(0)">Entregar</a>
+        </div>
         <h2 class="title--center"> Entregar </h2>
         <form action="javascript:void(0)" onsubmit="app.entregar_peca()" name="f_entregar" class="form_serach_barcode">
             <input type="text" value="" name="id_user" hidden class="js-user-entregar">
@@ -186,6 +230,13 @@
         <div class=" js-alert-entregar"></div>
     </div>
     <div data-route="#/devolver">
+        <div class="trilha">
+            <a href="javascript:window.history.go(-4)">Home</a> /
+            <a href="javascript:window.history.go(-3)">Peças Identificadas</a> /
+            <a href="javascript:window.history.go(-2)">Lista de Nomes</a> /
+            <a href="javascript:window.history.go(-1)">Funcionario</a> /
+            <a href="javascript:void(0)">Devolver</a>
+        </div>
         <h2 class="title--center"> Devolver </h2>
         <form action="javascript:void(0)" onsubmit="app.devolver_peca()" name="f_devolver" class="form_serach_barcode">
             <input type="text" value="" name="id_user" hidden class="js-user-devolver">
@@ -198,11 +249,22 @@
         <div class="alert-form js-alert-devolver"></div>
     </div>
     <div data-route="#/pecas-por-local">
+        <div class="trilha">
+            <a href="javascript:window.history.go(-2)">Home</a> /
+            <a href="javascript:window.history.go(-1)">Peças Identificadas</a> /
+            <a href="javascript:void(0)">Localização</a>
+        </div>
         <h2 class="title--center"> Localização </h2>
         <div class="list js-list-locais"></div>
         <div class="space"></div>
     </div>
     <div data-route="#/lista-pecas-local">
+        <div class="trilha">
+            <a href="javascript:window.history.go(-3)">Home</a> /
+            <a href="javascript:window.history.go(-2)">Peças Identificadas</a> /
+            <a href="javascript:window.history.go(-1)">Localização</a> /
+            <a href="javascript:void(0)" class="js-title-peca-por-local-menu">{LOCAL}</a>
+        </div>
         <h2 class="title--center js-title-peca-por-local"> </h2>
         <a href="#/movimentar-peca" hidden class="btn-move-peca js-btn-move-peca" onclick="app.set_local(this)">
             Movimentar Peças pra cá
@@ -212,6 +274,13 @@
         <div class="space"></div>
     </div>
     <div data-route="#/movimentar-peca">
+        <div class="trilha">
+            <a href="javascript:window.history.go(-4)">Home</a> /
+            <a href="javascript:window.history.go(-3)">Peças Identificadas</a> /
+            <a href="javascript:window.history.go(-2)">Localização</a> /
+            <a href="javascript:window.history.go(-1)">Local</a> /
+            <a href="javascript:void(0)">Movimentar</a>
+        </div>
         <h2 class="title--center"> Movimentar Peça </h2>
         <form action="javascript:void(0)" onsubmit="app.mover_peca()" name="form_move_local"
             class="form_serach_barcode">
@@ -225,6 +294,12 @@
         <div class="js-history-moving"></div>
     </div>
     <div data-route="#/historico-movimentacao">
+        <div class="trilha">
+            <a href="javascript:window.history.go(-5)">Home</a> /
+            <a href="javascript:window.history.go(-4)">Peças Identificadas</a> /
+            <a href="javascript:window.history.go(-3)">Localiza peça</a> /
+            <a href="javascript:void(0)" class="js-title-historico-menu">{PECA}</a>
+        </div>
         <h2 class="title--center js-title-historico"></h2>
         <div class="list js-historico-list"></div>
         <div class="space"></div>

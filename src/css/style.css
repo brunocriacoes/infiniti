@@ -337,7 +337,6 @@ body {
     text-transform: uppercase;
     margin: 0;
     padding: 0;
-    margin-bottom: 20px;
 }
 .form_serach_barcode {
     display: grid;
@@ -568,4 +567,18 @@ body {
 .gap-back {
     display: block;
     width: 30px;
+}
+.trilha {
+    display: block;
+    background-color: var(--azul);
+    color: var(--amarelo);
+    text-align: center;
+    padding: 10px 0;
+}
+.trilha a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 0px 8px;
+    color: var(--amarelo);
+    font-size: 14px;
 }
