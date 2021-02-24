@@ -72,6 +72,7 @@ export default {
             `
     },
     set peca_por_nome(arr) {
+        document.querySelector('.js-nome-da-peca').innerHTML = arr?.[0]?.peca?.nome
         document.querySelector('.js-name-user-detalhes').innerHTML = arr?.[0]?.user?.nome
         document.querySelector('.js-name-user-detalhes-menu').innerHTML = arr?.[0]?.user?.nome
         let tpl = post => `
@@ -233,8 +234,8 @@ export default {
         document.querySelector('.js-list-stock').innerHTML = arr.map(tpl_em_estoque).join('')
     },
     set nome_peca_estoque(value) {
-        document.querySelector('.js-more-pec-tile').innerHTML = value
-        document.querySelector('.js-more-pec-tile-menu').innerHTML = value
+        document.querySelector('.js-more-pec-tile').innerHTML = decodeURI(value) 
+        document.querySelector('.js-more-pec-tile-menu').innerHTML = decodeURI(value)
     },
     set pecas_em_uso(arr) {
         let tpl = post => `
