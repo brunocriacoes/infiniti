@@ -1,3 +1,5 @@
+import { parans } from './utils.js'
+
 export default {
     corruent_user: {
         set username(valor) {
@@ -60,8 +62,9 @@ export default {
             </a>
         `
         document.querySelector('.js-peca-por-user').innerHTML = arr.map(tpl).join('')
-        let user_id = arr[0]?.user_id
-        let user_name = arr[0]?.user_name
+        let data_default = parans() 
+        let user_id = arr[0]?.user_id || data_default[1]
+        let user_name = arr[0]?.user_name || data_default[2]
         document.querySelector('.js-name-peca').innerHTML = user_name?.replace( /%20/gi, ' ' )
         document.querySelector('.js-name-peca-menu').innerHTML = user_name?.replace( /%20/gi, ' ' )
         document.querySelector('.js-link-delivery').innerHTML = `
