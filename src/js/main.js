@@ -7,6 +7,7 @@ globalThis.app = app
 
 app.start()
 app.is_logged()
+app.lista_nome_entregar_motivos()
 
 route.add( '/lista-de-nomes', parans => {
     app.lista_de_nomes()

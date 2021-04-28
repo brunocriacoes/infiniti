@@ -582,3 +582,12 @@ body {
     color: var(--amarelo);
     font-size: 14px;
 }
+.motivos {
+    display: block;
+    width: 79%;
+    margin: 0 auto;
+    height: 30px;
+    border-radius: 50px;
+    border: 1px solid var(--azul);
+    text-indent: 12px;
+}

@@ -245,5 +245,21 @@ export default {
             }))
         }
         return []
-    }
+    },
+    async lista_nome_entregar_motivos() {
+        let { status, valor, RESULT } = await api.lista_nome_entregar_motivos()
+        let arr = RESULT[0].valor
+        return arr.map(post => ({
+            id: post.codigomot,
+            text: post.descricaomot,
+        }))
+        
+    },
+    async lista_nome_devolver( barcode, id_funcionario, id_motivo ) {
+        let { status, mensagem } = await api.lista_nome_devolver( barcode, id_funcionario, id_motivo )
+        return {
+            status,
+            message: mensagem
+        }
+    },
 }

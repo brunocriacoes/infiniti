@@ -135,6 +135,7 @@ export default {
         let playload = {
             user_id: document.f_entregar.id_user.value,
             barcode: document.f_entregar.barcode.value,
+            id_motivo: document.f_entregar.id_motivo.value,
         }
         document.f_entregar.barcode.value = ''
         return playload
@@ -368,6 +369,9 @@ export default {
             </a>
         `
         document.querySelector('.js-historico-list').innerHTML = arr.map(tpl).join('')
+    },
+    set motivos( arr ) {
+        document.querySelector('.js-motivos').innerHTML = arr.map( post => `<option value="${post.id}">${post.text}</option>` ).join('')
     },
 
 }

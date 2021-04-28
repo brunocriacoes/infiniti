@@ -68,8 +68,9 @@ export default {
     },
     async entregar_peca() {
         ui.loading = true
-        let { user_id, barcode } = ui.entregar
-        let res = await api.entregar_peca(user_id, barcode)
+        let { user_id, barcode, id_motivo } = ui.entregar
+        // let res = await api.entregar_peca(user_id, barcode)
+        let res = await api.lista_nome_devolver( barcode, user_id, id_motivo )
         cache.entregar = res
         ui.historico_entregas = cache.entregar
         ui.loading = false
@@ -166,5 +167,9 @@ export default {
         ui.title_historico = peca_nome
         ui.list_historico = playload
         ui.loading = false
+    },
+    async lista_nome_entregar_motivos() {
+        let arr = await api.lista_nome_entregar_motivos()
+        ui.motivos = arr || []
     },
 }

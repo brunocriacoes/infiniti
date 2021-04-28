@@ -219,12 +219,17 @@
             <a href="javascript:void(0)">Entregar</a>
         </div>
         <h2 class="title--center"> Entregar </h2>
-        <form action="javascript:void(0)" onsubmit="app.entregar_peca()" name="f_entregar" class="form_serach_barcode">
+        <form action="javascript:void(0)" onsubmit="app.entregar_peca()" name="f_entregar" >
+            <select name="id_motivo" class="js-motivos motivos">
+                <option value="0">Escolha...</option>
+            </select>
             <input type="text" value="" name="id_user" hidden class="js-user-entregar">
-            <input type="text" name="barcode" placeholder="Informe o código">
-            <button type="submit">
-                <img src="./src/ico/check.svg">
-            </button>
+            <div class="form_serach_barcode" >
+                <input type="text" name="barcode" placeholder="Informe o código">
+                <button type="submit">
+                    <img src="./src/ico/check.svg">
+                </button>
+            </div>
         </form>
         <div class="space"></div>
         <div class=" js-alert-entregar"></div>

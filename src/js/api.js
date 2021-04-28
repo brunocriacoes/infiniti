@@ -62,5 +62,11 @@ export default {
     },
     async historico_movimentacao(codbarras) {
         return await this.post('/lermovimentacaopeca', { codbarras })
+    },
+    async lista_nome_entregar_motivos() {
+        return await this.post('/lermotivos', {})
+    },
+    async lista_nome_devolver( barcode, id_funcionario, id_motivo ) {        
+        return await this.post('/devolverpecaident', { codbarras: barcode, fun: id_funcionario, mot: id_motivo, })
     },    
 }
