@@ -74,7 +74,7 @@ export default {
         let res = await fetch(`http://licenca.infinitisistemas.com.br/localizaregistro.php?localizador=${localizador}`)
         res = await res.json()
         res = res[0]
-        cache.host = `http://${res.HOST}:${res.PORTA}`
+        cache.host = `http://${res.HOST_REMOTO}:${res.PORTA}`
     },
 
 }
