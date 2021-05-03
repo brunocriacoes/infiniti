@@ -1,7 +1,7 @@
 import cache from './cache.js'
 export default {
     async post(path, params) {
-        let uri = "http://191.243.198.108:9194"
+        let uri = cache.host
         params.dwwelcomemessage = cache.token
         let paser_params = new URLSearchParams(params).toString()
         try {
@@ -22,6 +22,7 @@ export default {
     },
     async login(localizador, username, pass) {
         this.welcome(localizador, username, pass)
+        this.licenca(localizador)
         return await this.post('/login', {})
     },
     async lista_de_nomes() {
@@ -66,7 +67,14 @@ export default {
     async lista_nome_entregar_motivos() {
         return await this.post('/lermotivos', {})
     },
-    async lista_nome_devolver( barcode, id_funcionario, id_motivo ) {        
+    async lista_nome_devolver(barcode, id_funcionario, id_motivo) {
         return await this.post('/devolverpecaident', { codbarras: barcode, fun: id_funcionario, mot: id_motivo, })
-    },    
+    },
+    async licenca(localizador) {
+        let res = await fetch(`http://licenca.infinitisistemas.com.br/localizaregistro.php?localizador=${localizador}`)
+        res = await res.json()
+        res = res[0]
+        cache.host = `http://${res.HOST}:${res.PORTA}`
+    },
+
 }

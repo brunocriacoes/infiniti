@@ -1,5 +1,11 @@
 import store from './store.js'
 export default {
+    set host(valor) {
+        localStorage.setItem('HOST', valor)
+    },
+    get host() {
+        return localStorage.getItem('HOST')
+    }, 
     set localizador(valor) {
         localStorage.setItem('localizador', valor)
     },
