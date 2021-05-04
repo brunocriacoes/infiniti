@@ -88,6 +88,12 @@ body {
     color: var(--azul);
     font-size: 18px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, .3), inset 1px 1px 3px  rgba(0, 0, 0, .3);
+    cursor: pointer;
+    font-weight: bold;
+}
+.btn--login:hover {
+    background-color: #f39c12;
+    color: #FFF;
 }
 .container {
     display: block;

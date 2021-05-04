@@ -21,8 +21,8 @@ export default {
         return token
     },
     async login(localizador, username, pass) {
+        await this.licenca(localizador)
         this.welcome(localizador, username, pass)
-        this.licenca(localizador)
         return await this.post('/login', {})
     },
     async lista_de_nomes() {
@@ -71,10 +71,16 @@ export default {
         return await this.post('/devolverpecaident', { codbarras: barcode, fun: id_funcionario, mot: id_motivo, })
     },
     async licenca(localizador) {
-        let res = await fetch(`http://licenca.infinitisistemas.com.br/localizaregistro.php?localizador=${localizador}`)
-        res = await res.json()
-        res = res[0]
-        cache.host = `http://${res.HOST_REMOTO}:${res.PORTA}`
+        try {
+            if( !cache.token ) {
+                let res = await fetch(`http://licenca.infinitisistemas.com.br/localizaregistro.php?localizador=${localizador}`)
+                res = await res.json()
+                res = res[0]
+                cache.host = `http://${res.HOST_REMOTO}:${res.PORTA}`
+            }
+        } catch (error) {
+            
+        }
     },
 
 }

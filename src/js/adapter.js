@@ -248,7 +248,7 @@ export default {
     },
     async lista_nome_entregar_motivos() {
         let { status, valor, RESULT } = await api.lista_nome_entregar_motivos()
-        let arr = RESULT[0].valor
+        let arr = RESULT?.[0]?.valor || []
         return arr.map(post => ({
             id: post.codigomot,
             text: post.descricaomot,
