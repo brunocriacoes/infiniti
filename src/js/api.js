@@ -73,10 +73,10 @@ export default {
     async licenca(localizador) {
         try {
             if( !cache.token ) {
-                let res = await fetch(`//licenca.infinitisistemas.com.br/localizaregistro.php?localizador=${localizador}`)
+                let res = await fetch(`http://licenca.infinitisistemas.com.br/localizaregistro.php?localizador=${localizador}`)
                 res = await res.json()
                 res = res[0]
-                cache.host = `//${res.HOST_REMOTO}:${res.PORTA}`
+                cache.host = `http://${res.HOST_REMOTO}:${res.PORTA}`
             }
         } catch (error) {
             
