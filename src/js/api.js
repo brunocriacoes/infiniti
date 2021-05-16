@@ -1,7 +1,7 @@
 import cache from './cache.js'
 export default {
     async post(path, params) {
-        let uri = cache.host
+        let uri = 'https://acesso.infinitisistemas.com.br'
         params.dwwelcomemessage = cache.token
         let paser_params = new URLSearchParams(params).toString()
         try {
@@ -21,7 +21,7 @@ export default {
         return token
     },
     async login(localizador, username, pass) {
-        await this.licenca(localizador)
+        // await this.licenca(localizador)
         this.welcome(localizador, username, pass)
         return await this.post('/login', {})
     },
