@@ -1,7 +1,7 @@
 import cache from './cache.js'
 export default {
     async post(path, params) {
-        let uri = 'https://acesso.infinitisistemas.com.br'
+        let uri = 'https://acesso.infinitilav.com.br'
         params.dwwelcomemessage = cache.token
         let paser_params = new URLSearchParams(params).toString()
         try {
